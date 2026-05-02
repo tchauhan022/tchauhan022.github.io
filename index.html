@@ -3,42 +3,48 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tejal Chauhan, PMP — Project &amp; Program Manager Portfolio</title>
-<meta name="description" content="PMP-certified Program/Project Manager. IT delivery governance, operations excellence, and PMO reporting at scale.">
+<title>Tejal Chauhan, PMP — Project &amp; Program Manager</title>
+<meta name="description" content="PMP-certified Program/Project Manager bridging IT delivery and operations excellence. Power BI, Jira, Microsoft Project, supply chain coordination, PMO governance.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Manrope:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #FAF5E9;
-    --bg-elev: #F2EAD8;
-    --ink: #1A1815;
-    --ink-soft: #3D3830;
-    --ink-mute: #7A7066;
-    --rule: #C9BEA7;
-    --rule-soft: #DDD4BE;
+    /* Surfaces */
+    --bg: #FFFFFF;
+    --surface: #FFFFFF;
+    --surface-elev: #F7F7F4;
 
-    --accent-it: #14532D;
-    --accent-it-soft: #2A6E48;
-    --accent-it-tint: rgba(20, 83, 45, 0.08);
+    /* Ink */
+    --ink: #0E0E0E;
+    --ink-soft: #2E2E2E;
+    --ink-mute: #6E6E6E;
+    --ink-faint: #A0A0A0;
 
-    --accent-nonit: #7F1D1D;
-    --accent-nonit-soft: #9A3D3D;
-    --accent-nonit-tint: rgba(127, 29, 29, 0.08);
+    /* Rules */
+    --rule: #E2E0D8;
+    --rule-soft: #ECEAE2;
 
-    --accent: var(--accent-it);
-    --accent-soft: var(--accent-it-soft);
-    --accent-tint: var(--accent-it-tint);
+    /* Primary — corporate navy */
+    --navy: #0E2954;
+    --navy-soft: #1F4287;
+    --navy-tint: #E8EDF5;
 
-    --display: 'Fraunces', 'Times New Roman', serif;
-    --sans: 'Manrope', system-ui, sans-serif;
+    /* Track accents — coded systematically */
+    --it: #4A8270;             /* IT track — refined sage green */
+    --it-soft: #A8C9B8;
+    --it-tint: #E8F2EC;
+    --it-bg: #F1F7F3;
+
+    --ops: #B85A6B;            /* Ops track — muted rose */
+    --ops-soft: #E5B4BD;
+    --ops-tint: #F8E6EA;
+    --ops-bg: #FBF1F3;
+
+    /* Type */
+    --display: 'Instrument Serif', 'Times New Roman', serif;
+    --sans: 'Manrope', system-ui, -apple-system, sans-serif;
     --mono: 'JetBrains Mono', ui-monospace, monospace;
-  }
-
-  body[data-mode="nonit"] {
-    --accent: var(--accent-nonit);
-    --accent-soft: var(--accent-nonit-soft);
-    --accent-tint: var(--accent-nonit-tint);
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -54,734 +60,1366 @@
     overflow-x: hidden;
   }
 
+  /* Subtle dot grid background — gives texture without noise */
   body::before {
     content: "";
     position: fixed;
     inset: 0;
     pointer-events: none;
-    background-image: radial-gradient(circle at 20% 30%, rgba(0,0,0,0.012) 1px, transparent 1px),
-                      radial-gradient(circle at 70% 60%, rgba(0,0,0,0.012) 1px, transparent 1px);
-    background-size: 7px 7px, 11px 11px;
+    background-image:
+      radial-gradient(circle, rgba(14, 41, 84, 0.025) 1px, transparent 1px);
+    background-size: 24px 24px;
+    background-position: 0 0;
     z-index: 0;
   }
 
   .container {
-    max-width: 1240px;
+    max-width: 1280px;
     margin: 0 auto;
-    padding: 0 32px;
+    padding: 0 36px;
     position: relative;
     z-index: 1;
   }
 
-  .it-only { display: block; }
-  .nonit-only { display: none; }
-  body[data-mode="nonit"] .it-only { display: none; }
-  body[data-mode="nonit"] .nonit-only { display: block; }
-
-  span.it-only, span.nonit-only { display: inline; }
-  body[data-mode="nonit"] span.it-only { display: none; }
-  body[data-mode="it"] span.nonit-only { display: none; }
-
-  li.it-only { display: list-item; }
-  li.nonit-only { display: none; }
-  body[data-mode="nonit"] li.it-only { display: none; }
-  body[data-mode="nonit"] li.nonit-only { display: list-item; }
-
-  /* NAV */
+  /* ======================== NAV ======================== */
   nav.top {
-    position: sticky; top: 0; z-index: 50;
-    background: rgba(250, 245, 233, 0.9);
-    backdrop-filter: saturate(140%) blur(10px);
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: rgba(255, 255, 255, 0.88);
+    backdrop-filter: saturate(160%) blur(14px);
+    -webkit-backdrop-filter: saturate(160%) blur(14px);
     border-bottom: 1px solid var(--rule-soft);
-    transition: border-color 0.5s ease;
   }
   nav.top .row {
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 16px 0; gap: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 0;
+    gap: 24px;
   }
   nav.top .name {
-    font-family: var(--display); font-weight: 500; font-size: 18px;
-    letter-spacing: -0.01em; flex-shrink: 0;
+    font-family: var(--display);
+    font-weight: 400;
+    font-size: 22px;
+    letter-spacing: -0.01em;
+    color: var(--navy);
+    flex-shrink: 0;
   }
-  nav.top ul.nav-links { list-style: none; display: flex; gap: 24px; }
+  nav.top .name span { color: var(--ink-faint); font-style: italic; font-size: 14px; margin-left: 6px; }
+  nav.top ul.nav-links { list-style: none; display: flex; gap: 28px; align-items: center; }
   nav.top ul.nav-links a {
-    text-decoration: none; color: var(--ink-soft);
-    font-size: 13px; letter-spacing: 0.02em; transition: color 0.2s;
+    text-decoration: none;
+    color: var(--ink-soft);
+    font-size: 13px;
+    letter-spacing: 0.01em;
+    font-weight: 500;
+    transition: color 0.2s;
   }
-  nav.top ul.nav-links a:hover { color: var(--accent); }
-
-  .mode-switch {
-    display: inline-flex; align-items: center;
-    background: var(--bg-elev);
-    border: 1px solid var(--rule);
-    border-radius: 999px; padding: 4px;
-    transition: border-color 0.5s ease, background 0.5s ease;
-  }
-  .mode-switch button {
-    border: none; background: transparent;
-    padding: 8px 18px;
-    font-family: var(--mono); font-size: 11px;
-    letter-spacing: 0.1em; text-transform: uppercase;
-    color: var(--ink-mute);
-    cursor: pointer; border-radius: 999px;
-    transition: color 0.3s ease, background 0.3s ease;
-    white-space: nowrap; font-weight: 500;
-  }
-  .mode-switch button:hover { color: var(--ink); }
-  .mode-switch button.active {
-    background: var(--accent); color: var(--bg);
-  }
+  nav.top ul.nav-links a:hover { color: var(--navy); }
 
   .status-pill {
-    display: inline-flex; align-items: center; gap: 8px;
-    font-family: var(--mono); font-size: 11px;
-    letter-spacing: 0.06em; text-transform: uppercase;
-    color: var(--ink-soft); flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--navy);
+    background: var(--navy-tint);
+    padding: 6px 12px;
+    border-radius: 999px;
+    flex-shrink: 0;
   }
   .status-pill::before {
-    content: ""; width: 7px; height: 7px;
-    border-radius: 50%; background: var(--accent);
-    box-shadow: 0 0 0 4px var(--accent-tint);
+    content: "";
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--it);
+    box-shadow: 0 0 0 3px rgba(74, 130, 112, 0.2);
     animation: pulse 2.4s ease-in-out infinite;
-    transition: background 0.5s ease, box-shadow 0.5s ease;
   }
   @keyframes pulse {
-    0%, 100% { opacity: 1; } 50% { opacity: 0.55; }
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
   }
 
-  /* HERO */
-  header.hero { padding: 96px 0 64px; }
-  .eyebrow {
-    font-family: var(--mono); font-size: 11px;
-    letter-spacing: 0.16em; text-transform: uppercase;
-    color: var(--ink-mute); margin-bottom: 24px;
+  /* ======================== HERO ======================== */
+  header.hero {
+    padding: 80px 0 48px;
+    position: relative;
   }
+
+  .hero-eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    margin-bottom: 32px;
+  }
+  .hero-eyebrow .num {
+    color: var(--navy);
+    font-weight: 500;
+  }
+  .hero-eyebrow .div {
+    flex: 0 0 36px;
+    height: 1px;
+    background: var(--ink-faint);
+  }
+
   h1.hero-name {
-    font-family: var(--display); font-weight: 350;
-    font-size: clamp(64px, 11vw, 156px);
-    line-height: 0.92; letter-spacing: -0.04em;
-    margin-bottom: 28px;
+    font-family: var(--display);
+    font-weight: 400;
+    font-size: clamp(56px, 9.2vw, 132px);
+    line-height: 0.96;
+    letter-spacing: -0.025em;
+    color: var(--ink);
+    margin-bottom: 24px;
   }
-  h1.hero-name sup {
-    font-size: 0.18em; font-family: var(--mono);
-    letter-spacing: 0.08em; vertical-align: super;
-    color: var(--accent); margin-left: 12px;
-    font-weight: 500; transition: color 0.5s ease;
+  h1.hero-name .pmp {
+    font-family: var(--mono);
+    font-size: 0.16em;
+    letter-spacing: 0.1em;
+    vertical-align: super;
+    color: var(--navy);
+    background: var(--navy-tint);
+    padding: 4px 10px;
+    border-radius: 4px;
+    margin-left: 12px;
+    font-weight: 500;
   }
+  h1.hero-name em {
+    font-style: italic;
+    color: var(--navy);
+    font-weight: 400;
+  }
+
+  .hero-positioning {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 64px;
+    align-items: end;
+    margin-bottom: 56px;
+    padding-bottom: 48px;
+    border-bottom: 1px solid var(--rule);
+  }
+
   .tagline {
-    font-family: var(--display); font-weight: 350;
-    font-size: clamp(20px, 2.4vw, 28px); line-height: 1.32;
-    color: var(--ink-soft); max-width: 880px; margin-bottom: 28px;
+    font-family: var(--display);
+    font-weight: 400;
+    font-size: clamp(22px, 2.6vw, 34px);
+    line-height: 1.28;
+    color: var(--ink-soft);
+    max-width: 780px;
   }
-  .tagline em { font-style: italic; color: var(--accent); transition: color 0.5s ease; }
-  .tagline .sep { color: var(--rule); margin: 0 12px; font-weight: 200; }
+  .tagline em {
+    font-style: italic;
+    color: var(--navy);
+  }
+
+  /* The dual-track converging streams visual */
+  .track-svg {
+    width: 220px;
+    height: 140px;
+    flex-shrink: 0;
+  }
+  .track-svg .stream-it { stroke: var(--it); stroke-width: 1.5; fill: none; }
+  .track-svg .stream-ops { stroke: var(--ops); stroke-width: 1.5; fill: none; }
+  .track-svg .converge-dot { fill: var(--navy); }
+  .track-svg .label-it { fill: var(--it); }
+  .track-svg .label-ops { fill: var(--ops); }
+  .track-svg text {
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
   .lede {
-    font-size: 18px; line-height: 1.6; max-width: 720px;
-    color: var(--ink-soft); margin-bottom: 56px;
+    font-size: 19px;
+    line-height: 1.6;
+    max-width: 760px;
+    color: var(--ink-soft);
+    margin-bottom: 56px;
+  }
+  .lede strong { color: var(--ink); font-weight: 600; }
+
+  /* Track legend — explains the color system */
+  .track-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 28px;
+    padding: 20px 28px;
+    background: #FCFCFA;
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+    margin-bottom: 64px;
+    box-shadow: 0 1px 0 rgba(14, 41, 84, 0.02);
+  }
+  .track-legend .leg-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+  .track-legend .leg-item .dot {
+    width: 10px; height: 10px;
+    border-radius: 50%;
+  }
+  .track-legend .leg-item .dot.it { background: var(--it); }
+  .track-legend .leg-item .dot.ops { background: var(--ops); }
+  .track-legend .leg-item .dot.both {
+    background: linear-gradient(135deg, var(--it) 0 50%, var(--ops) 50% 100%);
+  }
+  .track-legend .leg-divider {
+    flex: 1;
+    height: 1px;
+    background: var(--rule);
+    margin: 0 4px;
+    align-self: center;
+    min-width: 24px;
   }
 
   .info-grid {
-    display: grid; grid-template-columns: repeat(4, 1fr);
-    gap: 32px; padding-top: 40px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 36px;
+    padding-top: 36px;
     border-top: 1px solid var(--rule);
   }
   .info-grid .label {
-    font-family: var(--mono); font-size: 10px;
-    letter-spacing: 0.14em; text-transform: uppercase;
-    color: var(--ink-mute); margin-bottom: 12px;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    margin-bottom: 12px;
   }
   .info-grid .value {
-    font-family: var(--display); font-size: 19px;
-    font-weight: 400; line-height: 1.35;
+    font-family: var(--display);
+    font-size: 21px;
+    font-weight: 400;
+    line-height: 1.3;
+    color: var(--ink);
   }
   .info-grid .value small {
-    display: block; font-family: var(--sans); font-size: 13px;
-    color: var(--ink-mute); font-weight: 400; margin-top: 4px;
+    display: block;
+    font-family: var(--sans);
+    font-size: 13px;
+    color: var(--ink-mute);
+    font-weight: 400;
+    margin-top: 4px;
   }
   .info-grid a {
-    color: var(--ink); text-decoration: none;
-    border-bottom: 1px solid var(--rule); padding-bottom: 1px;
+    color: var(--ink);
+    text-decoration: none;
+    border-bottom: 1px solid var(--ink-faint);
+    padding-bottom: 1px;
     transition: all 0.2s;
   }
-  .info-grid a:hover { color: var(--accent); border-color: var(--accent); }
+  .info-grid a:hover { color: var(--navy); border-color: var(--navy); }
 
-  /* MARQUEE */
+  /* ======================== MARQUEE ======================== */
   .marquee {
-    background: var(--ink); color: var(--bg);
-    padding: 18px 0; overflow: hidden; margin: 64px 0;
+    background: var(--navy);
+    color: var(--bg);
+    padding: 20px 0;
+    overflow: hidden;
+    margin: 80px 0 0;
   }
   .marquee-track {
-    display: flex; gap: 48px; white-space: nowrap;
-    animation: scroll 40s linear infinite;
-    font-family: var(--mono); font-size: 13px;
+    display: flex;
+    gap: 56px;
+    white-space: nowrap;
+    animation: scroll 50s linear infinite;
+    font-family: var(--mono);
+    font-size: 13px;
     letter-spacing: 0.18em;
   }
-  .marquee-track span.unit { display: inline-flex; align-items: center; gap: 24px; }
-  .marquee-track .star { color: var(--accent-soft); font-size: 16px; transition: color 0.5s ease; }
+  .marquee-track .unit { display: inline-flex; align-items: center; gap: 14px; }
+  .marquee-track .star-it { color: var(--it-soft); font-size: 12px; }
+  .marquee-track .star-ops { color: var(--ops-soft); font-size: 12px; }
   @keyframes scroll {
-    0% { transform: translateX(0); } 100% { transform: translateX(-50%); }
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
   }
 
-  /* SECTIONS */
-  section { padding: 64px 0 96px; position: relative; }
+  /* ======================== SECTION CHROME ======================== */
+  section {
+    padding: 96px 0 80px;
+    position: relative;
+  }
   .section-num {
-    font-family: var(--mono); font-size: 11px;
-    letter-spacing: 0.16em; text-transform: uppercase;
-    color: var(--accent); margin-bottom: 20px;
-    display: flex; align-items: center; gap: 12px;
-    transition: color 0.5s ease;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--navy);
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
   }
   .section-num::after {
-    content: ""; flex: 1; height: 1px;
-    background: var(--rule-soft); max-width: 80px;
+    content: "";
+    flex: 0 0 80px;
+    height: 1px;
+    background: var(--rule);
   }
   h2.section-title {
-    font-family: var(--display); font-weight: 350;
-    font-size: clamp(48px, 7vw, 88px);
-    line-height: 0.96; letter-spacing: -0.03em;
-    margin-bottom: 56px; max-width: 1000px;
+    font-family: var(--display);
+    font-weight: 400;
+    font-size: clamp(40px, 5.6vw, 72px);
+    line-height: 1;
+    letter-spacing: -0.02em;
+    margin-bottom: 56px;
+    max-width: 1000px;
+    color: var(--ink);
   }
-  h2.section-title em { font-style: italic; color: var(--accent); transition: color 0.5s ease; }
+  h2.section-title em {
+    font-style: italic;
+    color: var(--navy);
+  }
   .section-sub {
-    font-family: var(--mono); font-size: 11px;
-    letter-spacing: 0.14em; text-transform: uppercase;
-    color: var(--ink-mute); margin-bottom: 16px;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    margin-bottom: 16px;
   }
 
-  /* ABOUT */
+  /* Track tag — used everywhere */
+  .track-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-weight: 500;
+    padding: 4px 10px;
+    border-radius: 999px;
+  }
+  .track-tag::before {
+    content: "";
+    width: 6px; height: 6px;
+    border-radius: 50%;
+  }
+  .track-tag.it {
+    background: var(--it-tint);
+    color: var(--it);
+  }
+  .track-tag.it::before { background: var(--it); }
+  .track-tag.ops {
+    background: var(--ops-tint);
+    color: var(--ops);
+  }
+  .track-tag.ops::before { background: var(--ops); }
+  .track-tag.both {
+    background: var(--navy-tint);
+    color: var(--navy);
+  }
+  .track-tag.both::before {
+    background: linear-gradient(135deg, var(--it) 0 50%, var(--ops) 50% 100%);
+  }
+
+  /* ======================== ABOUT ======================== */
   .about-grid {
-    display: grid; grid-template-columns: 1fr 2fr; gap: 80px;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 80px;
   }
-  .about-label {
-    font-family: var(--display); font-style: italic;
-    font-size: 22px; color: var(--ink-soft); line-height: 1.3;
-    position: sticky; top: 120px; align-self: start;
+  .about-aside {
+    position: sticky;
+    top: 110px;
+    align-self: start;
   }
+  .about-aside .label {
+    font-family: var(--display);
+    font-style: italic;
+    font-size: 22px;
+    color: var(--navy);
+    line-height: 1.3;
+    margin-bottom: 28px;
+  }
+  .about-aside .quote-mark {
+    font-family: var(--display);
+    font-size: 90px;
+    color: var(--it-soft);
+    line-height: 0.6;
+    margin-bottom: 12px;
+    display: block;
+  }
+  .about-aside .meta {
+    margin-top: 32px;
+    padding-top: 24px;
+    border-top: 1px solid var(--rule);
+  }
+  .about-aside .meta .row {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.06em;
+  }
+  .about-aside .meta .row .k { color: var(--ink-mute); text-transform: uppercase; letter-spacing: 0.1em; }
+  .about-aside .meta .row .v { color: var(--ink); }
+
   .about-body p {
-    font-size: 17px; line-height: 1.7;
-    color: var(--ink-soft); margin-bottom: 22px;
+    font-size: 18px;
+    line-height: 1.7;
+    color: var(--ink-soft);
+    margin-bottom: 24px;
   }
   .about-body strong { color: var(--ink); font-weight: 600; }
-  .about-body p:first-child { font-size: 19px; color: var(--ink); }
+  .about-body p:first-child {
+    font-family: var(--display);
+    font-size: 26px;
+    font-weight: 400;
+    line-height: 1.4;
+    color: var(--ink);
+    margin-bottom: 32px;
+  }
+  .about-body .it-highlight { background: var(--it-tint); padding: 0 4px; border-radius: 2px; }
+  .about-body .ops-highlight { background: var(--ops-tint); padding: 0 4px; border-radius: 2px; }
 
-  /* IMPACT */
+  /* ======================== IMPACT GRID ======================== */
+  .impact-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 36px;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  .impact-head .legend-mini {
+    display: flex;
+    gap: 20px;
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--ink-mute);
+    letter-spacing: 0.06em;
+  }
+  .impact-head .legend-mini .li {
+    display: flex; align-items: center; gap: 6px;
+    text-transform: uppercase;
+  }
+  .impact-head .legend-mini .li .dot {
+    width: 8px; height: 8px; border-radius: 50%;
+  }
+  .impact-head .legend-mini .li .dot.it { background: var(--it); }
+  .impact-head .legend-mini .li .dot.ops { background: var(--ops); }
+
   .impact-grid {
-    display: grid; grid-template-columns: repeat(4, 1fr); gap: 0;
-    border-top: 1px solid var(--rule);
-    border-left: 1px solid var(--rule);
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
   }
   .stat {
-    padding: 32px 28px 36px;
-    border-right: 1px solid var(--rule);
-    border-bottom: 1px solid var(--rule);
-    background: var(--bg);
-    transition: background 0.25s;
+    background: #FCFCFA;
+    border: 1px solid var(--rule);
+    border-radius: 12px;
+    padding: 28px 24px 28px;
+    position: relative;
+    transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
   }
-  .stat:hover { background: var(--accent-tint); }
-  .stat .org {
-    font-family: var(--mono); font-size: 10px;
-    letter-spacing: 0.14em; text-transform: uppercase;
-    color: var(--accent); margin-bottom: 10px;
-    transition: color 0.5s ease;
+  .stat:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(14, 41, 84, 0.06);
   }
+  .stat.it:hover { border-color: var(--it); }
+  .stat.ops:hover { border-color: var(--ops); }
+  .stat .stat-track {
+    position: absolute;
+    top: 0; left: 0;
+    width: 32px; height: 3px;
+    border-radius: 0 0 4px 0;
+  }
+  .stat.it .stat-track { background: var(--it); }
+  .stat.ops .stat-track { background: var(--ops); }
+  .stat .stat-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 18px;
+  }
+  .stat .stat-org {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    font-weight: 500;
+  }
+  .stat .stat-tag {
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 999px;
+    font-weight: 500;
+  }
+  .stat.it .stat-tag { background: var(--it-tint); color: var(--it); }
+  .stat.ops .stat-tag { background: var(--ops-tint); color: var(--ops); }
   .stat .figure {
-    font-family: var(--display); font-weight: 350;
-    font-size: 56px; line-height: 1;
-    letter-spacing: -0.03em; margin-bottom: 14px;
+    font-family: var(--display);
+    font-weight: 400;
+    font-size: 56px;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    margin-bottom: 14px;
+    color: var(--ink);
   }
-  .stat .desc { font-size: 13px; line-height: 1.45; color: var(--ink-soft); }
+  .stat .desc {
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--ink-soft);
+  }
 
-  /* EXPERIENCE */
+  /* ======================== EXPERIENCE ======================== */
   .exp-meta {
-    display: flex; align-items: baseline; justify-content: space-between;
-    margin-bottom: 40px; padding-bottom: 24px;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 36px;
+    padding-bottom: 24px;
     border-bottom: 1px solid var(--rule);
   }
   .exp-meta .span {
-    font-family: var(--display); font-style: italic;
-    font-size: 24px; color: var(--ink-soft);
+    font-family: var(--display);
+    font-style: italic;
+    font-size: 22px;
+    color: var(--navy);
   }
   .exp-meta .marker {
-    font-family: var(--mono); font-size: 11px;
-    letter-spacing: 0.14em; text-transform: uppercase;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
     color: var(--ink-mute);
   }
+
   .exp-row {
-    display: grid; grid-template-columns: 220px 1fr;
-    gap: 56px; padding: 40px 0;
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    gap: 56px;
+    padding: 44px 0;
     border-bottom: 1px solid var(--rule-soft);
+    position: relative;
   }
   .exp-row:last-child { border-bottom: none; }
-  .exp-date {
-    font-family: var(--mono); font-size: 12px;
-    letter-spacing: 0.06em; color: var(--ink-mute);
+
+  .exp-side .exp-date {
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.06em;
+    color: var(--ink-mute);
+    margin-bottom: 14px;
   }
-  .exp-date .badge {
-    display: inline-block; margin-top: 10px;
-    padding: 4px 10px; background: var(--accent); color: var(--bg);
-    font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase;
-    transition: background 0.5s ease;
+  .exp-side .badge-current {
+    display: inline-block;
+    margin-bottom: 14px;
+    padding: 4px 10px;
+    background: var(--navy);
+    color: var(--bg);
+    font-size: 10px;
+    font-family: var(--mono);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    border-radius: 4px;
   }
+  .exp-side .track-tag {
+    margin-bottom: 4px;
+  }
+
   .exp-role {
-    font-family: var(--display); font-weight: 400;
-    font-size: 26px; line-height: 1.2;
-    margin-bottom: 6px; letter-spacing: -0.01em;
+    font-family: var(--display);
+    font-weight: 400;
+    font-size: 28px;
+    line-height: 1.2;
+    margin-bottom: 6px;
+    letter-spacing: -0.01em;
+    color: var(--ink);
   }
   .exp-co {
-    font-size: 14px; color: var(--ink-mute); margin-bottom: 22px;
-    font-family: var(--mono); letter-spacing: 0.04em;
+    font-size: 14px;
+    color: var(--ink-mute);
+    margin-bottom: 24px;
+    font-family: var(--mono);
+    letter-spacing: 0.04em;
   }
   .exp-body ul { list-style: none; }
   .exp-body li {
-    position: relative; padding-left: 22px; margin-bottom: 12px;
-    font-size: 15px; line-height: 1.6; color: var(--ink-soft);
+    position: relative;
+    padding-left: 26px;
+    margin-bottom: 14px;
+    font-size: 15px;
+    line-height: 1.65;
+    color: var(--ink-soft);
   }
   .exp-body li::before {
-    content: ""; position: absolute; left: 0; top: 11px;
-    width: 10px; height: 1px; background: var(--accent);
-    transition: background 0.5s ease;
+    content: "";
+    position: absolute;
+    left: 0; top: 11px;
+    width: 14px; height: 1px;
+    background: var(--navy);
   }
+  .exp-body li.it-bullet::before { background: var(--it); }
+  .exp-body li.ops-bullet::before { background: var(--ops); }
   .exp-body li strong { color: var(--ink); font-weight: 600; }
 
-  /* CASE STUDIES */
+  /* ======================== CASE STUDIES ======================== */
   .case-card {
-    padding: 48px 0; border-top: 1px solid var(--rule);
-    display: grid; grid-template-columns: 1fr 2fr; gap: 64px;
+    padding: 56px 0;
+    border-top: 1px solid var(--rule);
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 64px;
   }
   .case-card:last-child { border-bottom: 1px solid var(--rule); }
   .case-meta { padding-top: 4px; }
-  .case-tag {
-    font-family: var(--mono); font-size: 11px;
-    letter-spacing: 0.14em; text-transform: uppercase;
-    color: var(--accent); margin-bottom: 16px;
-    transition: color 0.5s ease;
+  .case-meta .case-num {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    color: var(--ink-mute);
+    margin-bottom: 16px;
   }
+  .case-meta .track-tag { margin-bottom: 16px; }
+  .case-meta .case-context {
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    color: var(--ink-soft);
+    line-height: 1.6;
+  }
+
   .case-title {
-    font-family: var(--display); font-weight: 350;
-    font-size: clamp(30px, 3.4vw, 44px);
-    line-height: 1.1; letter-spacing: -0.02em;
+    font-family: var(--display);
+    font-weight: 400;
+    font-size: clamp(28px, 3.2vw, 42px);
+    line-height: 1.12;
+    letter-spacing: -0.015em;
     margin-bottom: 28px;
+    color: var(--ink);
   }
-  .case-title em { font-style: italic; color: var(--accent); transition: color 0.5s ease; }
-  .case-context {
-    font-family: var(--mono); font-size: 12px;
-    letter-spacing: 0.06em; color: var(--ink-mute);
-    margin-bottom: 28px;
+  .case-title em {
+    font-style: italic;
+    color: var(--navy);
   }
-  .case-body p { font-size: 16px; line-height: 1.7; color: var(--ink-soft); margin-bottom: 18px; }
+  .case-body p {
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--ink-soft);
+    margin-bottom: 18px;
+  }
   .case-body strong { color: var(--ink); font-weight: 600; }
   .case-stats {
-    display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px;
-    margin-top: 36px; padding-top: 28px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    margin-top: 36px;
+    padding-top: 28px;
     border-top: 1px solid var(--rule-soft);
   }
   .case-stats .stat-mini .v {
-    font-family: var(--display); font-weight: 400;
-    font-size: 30px; letter-spacing: -0.02em;
-    color: var(--accent); line-height: 1; margin-bottom: 6px;
-    transition: color 0.5s ease;
+    font-family: var(--display);
+    font-weight: 400;
+    font-size: 32px;
+    letter-spacing: -0.02em;
+    color: var(--navy);
+    line-height: 1;
+    margin-bottom: 6px;
   }
-  .case-stats .stat-mini .l { font-size: 12px; color: var(--ink-mute); line-height: 1.35; }
+  .case-stats .stat-mini .l {
+    font-size: 12px;
+    color: var(--ink-mute);
+    line-height: 1.4;
+  }
 
-  /* TOOLKIT */
-  .tk-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 56px 64px; }
+  /* ======================== TOOLKIT ======================== */
+  .tk-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 56px 64px;
+  }
+  .tk-cat {
+    background: #FCFCFA;
+    border: 1px solid var(--rule);
+    border-radius: 12px;
+    padding: 32px 32px 24px;
+    position: relative;
+  }
+  .tk-cat::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 24px;
+    width: 40px; height: 3px;
+    background: var(--navy);
+    border-radius: 0 0 4px 4px;
+  }
+  .tk-cat.cat-it::before { background: var(--it); }
+  .tk-cat.cat-ops::before { background: var(--ops); }
+
+  .tk-cat .cat-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 4px;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
   .tk-cat h3 {
-    font-family: var(--display); font-weight: 400; font-size: 24px;
-    margin-bottom: 4px; letter-spacing: -0.01em;
+    font-family: var(--display);
+    font-weight: 400;
+    font-size: 26px;
+    letter-spacing: -0.01em;
+    color: var(--ink);
   }
   .tk-cat .cat-sub {
-    font-family: var(--mono); font-size: 11px;
-    letter-spacing: 0.12em; text-transform: uppercase;
-    color: var(--ink-mute); margin-bottom: 22px;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    margin-bottom: 22px;
   }
-  .tk-cat ul { list-style: none; }
-  .tk-cat li {
-    display: flex; justify-content: space-between; align-items: baseline;
-    padding: 11px 0; border-bottom: 1px solid var(--rule-soft);
-    font-size: 14px; gap: 16px;
+
+  /* Skill bars — visual progress indicators */
+  .tk-cat ul.skill-list { list-style: none; }
+  .tk-cat ul.skill-list li {
+    padding: 10px 0;
+    border-bottom: 1px solid var(--rule-soft);
   }
-  .tk-cat li .skill { color: var(--ink); }
-  .tk-cat li .lvl {
-    font-family: var(--mono); font-size: 11px;
-    color: var(--ink-mute); letter-spacing: 0.04em; flex-shrink: 0;
+  .tk-cat ul.skill-list li:last-child { border-bottom: none; }
+  .skill-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 6px;
   }
-  .tk-cat li .lvl b { color: var(--accent); font-weight: 500; transition: color 0.5s ease; }
+  .skill-row .skill { color: var(--ink); font-size: 14px; }
+  .skill-row .lvl {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--ink-mute);
+    letter-spacing: 0.04em;
+    flex-shrink: 0;
+    text-transform: uppercase;
+  }
+  .skill-row .lvl b { color: var(--navy); font-weight: 500; }
+  .skill-bar {
+    height: 3px;
+    width: 100%;
+    background: var(--rule-soft);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+  .skill-bar .fill {
+    height: 100%;
+    background: var(--navy);
+    border-radius: 2px;
+    transition: width 1s ease 0.3s;
+  }
+  .tk-cat.cat-it .skill-bar .fill { background: var(--it); }
+  .tk-cat.cat-it .skill-row .lvl b { color: var(--it); }
+  .tk-cat.cat-ops .skill-bar .fill { background: var(--ops); }
+  .tk-cat.cat-ops .skill-row .lvl b { color: var(--ops); }
 
   .cert-list {
-    list-style: none; display: grid;
-    grid-template-columns: 1fr 1fr; gap: 14px 32px; margin-top: 4px;
+    list-style: none;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px 24px;
   }
   .cert-list li {
-    padding: 14px 0; border-bottom: 1px solid var(--rule-soft);
-    font-size: 14px; display: block;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--rule-soft);
+    font-size: 14px;
   }
-  .cert-list li b { display: block; color: var(--ink); margin-bottom: 3px; font-weight: 500; }
-  .cert-list li span { color: var(--ink-mute); font-size: 12px; font-family: var(--mono); letter-spacing: 0.04em; }
+  .cert-list li b {
+    display: block;
+    color: var(--ink);
+    margin-bottom: 3px;
+    font-weight: 500;
+  }
+  .cert-list li span {
+    color: var(--ink-mute);
+    font-size: 12px;
+    font-family: var(--mono);
+    letter-spacing: 0.04em;
+  }
 
   .edu-list { list-style: none; }
   .edu-list li {
-    display: grid; grid-template-columns: 100px 1fr; gap: 24px;
-    padding: 18px 0; border-bottom: 1px solid var(--rule-soft);
-    font-size: 14px;
+    display: grid;
+    grid-template-columns: 110px 1fr;
+    gap: 24px;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--rule-soft);
   }
-  .edu-list li .yr { font-family: var(--mono); font-size: 12px; color: var(--ink-mute); letter-spacing: 0.04em; }
-  .edu-list li .deg { font-family: var(--display); font-weight: 400; font-size: 18px; line-height: 1.3; }
-  .edu-list li .deg em { font-style: italic; color: var(--accent); transition: color 0.5s ease; }
-  .edu-list li .deg small { display: block; color: var(--ink-mute); font-family: var(--sans); font-size: 13px; margin-top: 3px; }
+  .edu-list li:last-child { border-bottom: none; }
+  .edu-list li .yr {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--ink-mute);
+    letter-spacing: 0.04em;
+    padding-top: 4px;
+  }
+  .edu-list li .deg {
+    font-family: var(--display);
+    font-weight: 400;
+    font-size: 19px;
+    line-height: 1.3;
+    color: var(--ink);
+  }
+  .edu-list li .deg em {
+    font-style: italic;
+    color: var(--navy);
+  }
+  .edu-list li .deg small {
+    display: block;
+    color: var(--ink-mute);
+    font-family: var(--sans);
+    font-size: 13px;
+    margin-top: 4px;
+  }
 
-  /* CONTACT */
+  /* ======================== CONTACT ======================== */
   .contact-wrap {
-    display: grid; grid-template-columns: 1.4fr 1fr;
-    gap: 80px; align-items: end;
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 80px;
+    align-items: end;
   }
   .contact-pitch {
-    font-family: var(--display); font-weight: 350;
-    font-size: clamp(32px, 4vw, 52px);
-    line-height: 1.15; letter-spacing: -0.02em; color: var(--ink);
+    font-family: var(--display);
+    font-weight: 400;
+    font-size: clamp(28px, 3.6vw, 48px);
+    line-height: 1.18;
+    letter-spacing: -0.015em;
+    color: var(--ink);
   }
-  .contact-pitch em { font-style: italic; color: var(--accent); transition: color 0.5s ease; }
-  .contact-body { font-size: 15px; line-height: 1.7; color: var(--ink-soft); margin-top: 36px; max-width: 580px; }
-  .contact-list { list-style: none; margin-top: 8px; }
+  .contact-pitch em {
+    font-style: italic;
+    color: var(--navy);
+  }
+  .contact-body {
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--ink-soft);
+    margin-top: 32px;
+    max-width: 580px;
+  }
+  .contact-body strong { color: var(--ink); font-weight: 600; }
+  .contact-list {
+    list-style: none;
+    background: #FCFCFA;
+    border: 1px solid var(--rule);
+    border-radius: 12px;
+    padding: 8px 24px;
+  }
   .contact-list li {
-    padding: 18px 0; border-bottom: 1px solid var(--rule);
-    display: flex; justify-content: space-between; align-items: baseline; gap: 24px;
+    padding: 18px 0;
+    border-bottom: 1px solid var(--rule-soft);
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 24px;
   }
+  .contact-list li:last-child { border-bottom: none; }
   .contact-list li .lab {
-    font-family: var(--mono); font-size: 11px;
-    letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-mute);
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
   }
   .contact-list li a {
-    color: var(--ink); text-decoration: none; font-size: 15px;
-    border-bottom: 1px solid transparent; transition: all 0.2s;
+    color: var(--ink);
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.2s;
   }
-  .contact-list li a:hover { color: var(--accent); border-color: var(--accent); }
+  .contact-list li a:hover { color: var(--navy); }
+  .contact-list li a .arr {
+    transition: transform 0.2s;
+    display: inline-block;
+  }
+  .contact-list li a:hover .arr { transform: translateX(4px); }
 
-  /* FOOTER */
+  /* ======================== FOOTER ======================== */
   footer {
-    margin-top: 120px; padding: 40px 0 60px;
+    margin-top: 96px;
+    padding: 36px 0 56px;
     border-top: 1px solid var(--rule);
-    display: flex; justify-content: space-between; align-items: center;
-    font-family: var(--mono); font-size: 11px;
-    letter-spacing: 0.1em; color: var(--ink-mute); text-transform: uppercase;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    color: var(--ink-mute);
+    text-transform: uppercase;
   }
+  footer .dot-row {
+    display: flex; align-items: center; gap: 6px;
+  }
+  footer .dot-row .d {
+    width: 6px; height: 6px; border-radius: 50%;
+  }
+  footer .dot-row .d.it { background: var(--it); }
+  footer .dot-row .d.ops { background: var(--ops); }
 
-  /* RESPONSIVE */
-  @media (max-width: 1080px) { nav.top ul.nav-links { display: none; } }
-  @media (max-width: 820px) {
+  /* ======================== RESPONSIVE ======================== */
+  @media (max-width: 1080px) {
+    nav.top ul.nav-links { display: none; }
+    .impact-grid { grid-template-columns: repeat(3, 1fr); }
+  }
+  @media (max-width: 880px) {
     nav.top .status-pill { display: none; }
     nav.top .row { padding: 14px 0; }
+    .container { padding: 0 24px; }
+    .hero-positioning { grid-template-columns: 1fr; gap: 36px; align-items: start; }
+    .track-svg { width: 180px; height: 110px; }
     .info-grid { grid-template-columns: repeat(2, 1fr); gap: 28px; }
-    .about-grid { grid-template-columns: 1fr; gap: 32px; }
-    .about-label { position: static; }
+    .about-grid { grid-template-columns: 1fr; gap: 36px; }
+    .about-aside { position: static; }
     .impact-grid { grid-template-columns: repeat(2, 1fr); }
     .exp-row { grid-template-columns: 1fr; gap: 18px; }
-    .exp-date .badge { margin-top: 6px; }
     .case-card { grid-template-columns: 1fr; gap: 24px; }
     .case-stats { grid-template-columns: repeat(2, 1fr); }
     .tk-grid { grid-template-columns: 1fr; }
     .cert-list { grid-template-columns: 1fr; }
-    .contact-wrap { grid-template-columns: 1fr; gap: 32px; }
+    .contact-wrap { grid-template-columns: 1fr; gap: 36px; align-items: start; }
     h2.section-title { font-size: 44px; }
-    footer { flex-direction: column; gap: 8px; text-align: center; }
+    footer { flex-direction: column; gap: 12px; text-align: center; }
   }
   @media (max-width: 600px) {
-    .container { padding: 0 22px; }
-    header.hero { padding: 56px 0 40px; }
-    h1.hero-name { font-size: 56px; }
-    .tagline { font-size: 18px; }
-    .info-grid { grid-template-columns: 1fr; gap: 22px; padding-top: 28px; }
+    .container { padding: 0 20px; }
+    header.hero { padding: 56px 0 36px; }
+    h1.hero-name { font-size: 52px; }
+    .tagline { font-size: 20px; }
+    .info-grid { grid-template-columns: 1fr; gap: 22px; }
     .impact-grid { grid-template-columns: 1fr; }
     .stat .figure { font-size: 44px; }
     .case-stats { grid-template-columns: 1fr; }
-    section { padding: 48px 0 64px; }
+    section { padding: 64px 0 56px; }
     h2.section-title { font-size: 36px; margin-bottom: 36px; }
-    .mode-switch button { padding: 7px 12px; font-size: 10px; letter-spacing: 0.06em; }
+    .track-legend { padding: 16px 18px; gap: 14px; }
+    .track-legend .leg-divider { display: none; }
+    .about-body p:first-child { font-size: 22px; }
+  }
+
+  /* Scroll reveal */
+  .reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .reveal.in {
+    opacity: 1;
+    transform: translateY(0);
   }
 </style>
 </head>
-<body data-mode="it">
+<body>
 
+<!-- ===== NAV ===== -->
 <nav class="top">
   <div class="container">
     <div class="row">
-      <div class="name">Tejal Chauhan</div>
+      <div class="name">Tejal Chauhan<span>, PMP</span></div>
       <ul class="nav-links">
-        <li><a href="#work">Work</a></li>
+        <li><a href="#about">About</a></li>
         <li><a href="#impact">Impact</a></li>
-        <li><a href="#cases">Cases</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#cases">Case Studies</a></li>
         <li><a href="#toolkit">Toolkit</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
-      <div class="mode-switch" role="tablist" aria-label="Portfolio mode">
-        <button class="active" data-mode-set="it" role="tab">IT / Technical</button>
-        <button data-mode-set="nonit" role="tab">Operations / PMO</button>
-      </div>
       <div class="status-pill">Available</div>
     </div>
   </div>
 </nav>
 
+<!-- ===== HERO ===== -->
 <header class="hero">
   <div class="container">
-    <div class="eyebrow">
-      <span class="it-only">PMP-Certified · Program / Project Management · IT Delivery</span>
-      <span class="nonit-only">PMP-Certified · Project / Program Management · Operations &amp; PMO</span>
+    <div class="hero-eyebrow">
+      <span class="num">/01</span>
+      <span class="div"></span>
+      <span>PMP-Certified · Project &amp; Program Management</span>
     </div>
-    <h1 class="hero-name">Tejal Chauhan<sup>PMP</sup></h1>
 
-    <p class="tagline it-only">
-      Program/Project Manager <span class="sep">|</span>
-      <em>IT Delivery Governance &amp; Integrated Project Planning</em> <span class="sep">|</span>
-      Power BI, Jira, MS Project, PowerPoint <span class="sep">|</span>
-      Cross-Functional Execution <span class="sep">|</span>
-      Agile + Waterfall
-    </p>
-    <p class="tagline nonit-only">
-      Project/Program Manager <span class="sep">|</span>
-      <em>Operations Excellence &amp; Cost Optimization</em> <span class="sep">|</span>
-      Power BI Reporting &amp; PMO Governance <span class="sep">|</span>
-      Supply Chain &amp; Workforce Coordination <span class="sep">|</span>
-      Agile + Waterfall
+    <h1 class="hero-name">
+      Tejal <em>Chauhan</em><span class="pmp">PMP</span>
+    </h1>
+
+    <div class="hero-positioning">
+      <p class="tagline">
+        I bridge <em>IT delivery governance</em> and <em>operations excellence</em> — leading complex programs across <em>cross-functional teams</em>, with <em>data-driven reporting</em> that holds under pressure.
+      </p>
+
+      <!-- Dual-track converging streams SVG -->
+      <svg class="track-svg" viewBox="0 0 220 140" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <!-- IT stream (top, green) -->
+        <path class="stream-it" d="M 10 30 Q 60 30, 100 60 T 200 70" stroke-dasharray="2 3"/>
+        <text class="label-it" x="10" y="22">IT DELIVERY</text>
+
+        <!-- Operations stream (bottom, pink) -->
+        <path class="stream-ops" d="M 10 110 Q 60 110, 100 80 T 200 70" stroke-dasharray="2 3"/>
+        <text class="label-ops" x="10" y="128">OPERATIONS</text>
+
+        <!-- Convergence ring -->
+        <circle cx="200" cy="70" r="14" fill="none" stroke="#0E2954" stroke-width="1"/>
+        <circle class="converge-dot" cx="200" cy="70" r="5"/>
+        <text x="155" y="56" fill="#0E2954" font-size="9" letter-spacing="0.12em">UNIFIED</text>
+        <text x="155" y="68" fill="#0E2954" font-size="9" letter-spacing="0.12em">DELIVERY</text>
+      </svg>
+    </div>
+
+    <p class="lede">
+      Six-plus years scaling from a <strong>$2B+ TCS insurance program</strong> to <strong>PMO leadership across 13 university departments</strong>. I lead through clear frameworks — integrated project plans, RAID logs, RACI matrices, Power BI dashboards — and the kind of documentation that survives team turnover.
     </p>
 
-    <p class="lede it-only">Translating complex IT programs into steady delivery — through disciplined execution, integrated project plans, and reporting that holds under pressure.</p>
-    <p class="lede nonit-only">Translating complex operations into steady delivery — through disciplined execution, cost optimization, and reporting that drives leadership decisions.</p>
+    <!-- Track legend - explains the color system -->
+    <div class="track-legend">
+      <div class="leg-item">
+        <span class="dot it"></span>IT Delivery
+      </div>
+      <div class="leg-divider"></div>
+      <div class="leg-item">
+        <span class="dot ops"></span>Operations
+      </div>
+      <div class="leg-divider"></div>
+      <div class="leg-item">
+        <span class="dot both"></span>Both Tracks
+      </div>
+      <div class="leg-divider"></div>
+      <div class="leg-item" style="color: var(--ink-mute);">
+        Throughout this portfolio, work is tagged by track for clarity
+      </div>
+    </div>
 
     <div class="info-grid">
-      <div><div class="label">Based in</div><div class="value">Normal, Illinois<small>Open to Relocation</small></div></div>
-      <div><div class="label">Experience</div><div class="value">6+ Years<small>Agile + Waterfall</small></div></div>
-      <div><div class="label">Current</div><div class="value">MS Technology PM<small>Illinois State University '25</small></div></div>
-      <div><div class="label">Contact</div><div class="value"><a href="mailto:tejalchauhan022@gmail.com">tejalchauhan022@gmail.com</a></div></div>
+      <div>
+        <div class="label">Based in</div>
+        <div class="value">Normal, Illinois<small>Open to Relocation</small></div>
+      </div>
+      <div>
+        <div class="label">Experience</div>
+        <div class="value">6+ Years<small>Agile + Waterfall</small></div>
+      </div>
+      <div>
+        <div class="label">Current</div>
+        <div class="value">MS Technology PM<small>Illinois State University '25</small></div>
+      </div>
+      <div>
+        <div class="label">Contact</div>
+        <div class="value"><a href="mailto:tejalchauhan022@gmail.com">tejalchauhan022@<br>gmail.com</a></div>
+      </div>
     </div>
   </div>
 </header>
 
+<!-- ===== MARQUEE ===== -->
 <div class="marquee">
-  <div class="marquee-track it-only">
-    <span class="unit">PMP CERTIFIED <span class="star">★</span></span>
-    <span class="unit">IT DELIVERY <span class="star">★</span></span>
-    <span class="unit">INTEGRATED PLANNING <span class="star">★</span></span>
-    <span class="unit">RAID GOVERNANCE <span class="star">★</span></span>
-    <span class="unit">RACI ACCOUNTABILITY <span class="star">★</span></span>
-    <span class="unit">POWER BI INSIGHT <span class="star">★</span></span>
-    <span class="unit">PMP CERTIFIED <span class="star">★</span></span>
-    <span class="unit">IT DELIVERY <span class="star">★</span></span>
-    <span class="unit">INTEGRATED PLANNING <span class="star">★</span></span>
-    <span class="unit">RAID GOVERNANCE <span class="star">★</span></span>
-    <span class="unit">RACI ACCOUNTABILITY <span class="star">★</span></span>
-    <span class="unit">POWER BI INSIGHT <span class="star">★</span></span>
-  </div>
-  <div class="marquee-track nonit-only">
-    <span class="unit">PMP CERTIFIED <span class="star">★</span></span>
-    <span class="unit">OPERATIONS EXCELLENCE <span class="star">★</span></span>
-    <span class="unit">COST OPTIMIZATION <span class="star">★</span></span>
-    <span class="unit">PMO REPORTING <span class="star">★</span></span>
-    <span class="unit">SUPPLY CHAIN <span class="star">★</span></span>
-    <span class="unit">POWER BI INSIGHT <span class="star">★</span></span>
-    <span class="unit">PMP CERTIFIED <span class="star">★</span></span>
-    <span class="unit">OPERATIONS EXCELLENCE <span class="star">★</span></span>
-    <span class="unit">COST OPTIMIZATION <span class="star">★</span></span>
-    <span class="unit">PMO REPORTING <span class="star">★</span></span>
-    <span class="unit">SUPPLY CHAIN <span class="star">★</span></span>
-    <span class="unit">POWER BI INSIGHT <span class="star">★</span></span>
+  <div class="marquee-track">
+    <span class="unit"><span class="star-it">●</span> PMP CERTIFIED</span>
+    <span class="unit"><span class="star-it">●</span> IT DELIVERY GOVERNANCE</span>
+    <span class="unit"><span class="star-ops">●</span> OPERATIONS EXCELLENCE</span>
+    <span class="unit"><span class="star-it">●</span> INTEGRATED PROJECT PLANS</span>
+    <span class="unit"><span class="star-ops">●</span> COST OPTIMIZATION</span>
+    <span class="unit"><span class="star-it">●</span> RAID GOVERNANCE</span>
+    <span class="unit"><span class="star-ops">●</span> SUPPLY CHAIN</span>
+    <span class="unit"><span class="star-it">●</span> POWER BI INSIGHT</span>
+    <span class="unit"><span class="star-ops">●</span> PMO LEADERSHIP</span>
+    <span class="unit"><span class="star-it">●</span> AGILE + WATERFALL</span>
+    <!-- Duplicated for seamless scroll -->
+    <span class="unit"><span class="star-it">●</span> PMP CERTIFIED</span>
+    <span class="unit"><span class="star-it">●</span> IT DELIVERY GOVERNANCE</span>
+    <span class="unit"><span class="star-ops">●</span> OPERATIONS EXCELLENCE</span>
+    <span class="unit"><span class="star-it">●</span> INTEGRATED PROJECT PLANS</span>
+    <span class="unit"><span class="star-ops">●</span> COST OPTIMIZATION</span>
+    <span class="unit"><span class="star-it">●</span> RAID GOVERNANCE</span>
+    <span class="unit"><span class="star-ops">●</span> SUPPLY CHAIN</span>
+    <span class="unit"><span class="star-it">●</span> POWER BI INSIGHT</span>
+    <span class="unit"><span class="star-ops">●</span> PMO LEADERSHIP</span>
+    <span class="unit"><span class="star-it">●</span> AGILE + WATERFALL</span>
   </div>
 </div>
 
-<section id="work">
+<!-- ===== ABOUT ===== -->
+<section id="about">
   <div class="container">
-    <div class="section-num">01 / About</div>
-    <h2 class="section-title">About the <em>work</em></h2>
+    <div class="section-num">/02 — About</div>
+    <h2 class="section-title">A practitioner of <em>structured</em> delivery.</h2>
+
     <div class="about-grid">
-      <div class="about-label">Philosophy &amp; Approach</div>
-      <div class="about-body it-only">
-        <p>I work at the intersection of IT delivery discipline and data-driven decision-making — structured execution paired with the analytics that make it visible.</p>
-        <p>Six-plus years across enterprise IT delivery, program governance, and business analytics. I've scaled from leading distributed offshore teams on a $2B+ insurance platform program at TCS to PMO leadership across 13 university departments. I lead through clear frameworks, not force of personality: <strong>integrated project plans, RAID logs, RACI matrices, Agile ceremonies, Power BI dashboards</strong>, and the kind of documentation that survives team turnover.</p>
-        <p><strong>My edge is the handoff between delivery execution and reporting intelligence.</strong> I don't just track projects — I build the reporting infrastructure that lets leadership see risk, momentum, and milestone health in real time. From standardizing <strong>90+ SOPs</strong> and governing release schedules at TCS to automating dashboard refreshes that cut reporting effort by <strong>30%+</strong> at ISU, the pattern is consistent: reduce noise, increase signal, deliver on commitment.</p>
-        <p>I'm especially drawn to environments where IT delivery is complex, dependencies span systems, and continuous improvement isn't a buzzword but a daily habit.</p>
+      <aside class="about-aside">
+        <span class="quote-mark">&ldquo;</span>
+        <p class="label">Two tracks, one operating system: deliver on commitment.</p>
+        <div class="meta">
+          <div class="row"><span class="k">Based</span><span class="v">Normal, IL</span></div>
+          <div class="row"><span class="k">Years</span><span class="v">6+ Professional</span></div>
+          <div class="row"><span class="k">Stack</span><span class="v">Agile + Waterfall</span></div>
+          <div class="row"><span class="k">Languages</span><span class="v">English, Hindi, Gujarati</span></div>
+        </div>
+      </aside>
+
+      <div class="about-body">
+        <p>I work at the intersection of <span class="it-highlight">IT delivery discipline</span> and <span class="ops-highlight">operations excellence</span> — structured execution paired with the analytics that make it visible.</p>
+
+        <p>Six-plus years across enterprise IT delivery, program governance, supply chain coordination, and business analytics. I've scaled from leading distributed offshore teams on a <strong>$2B+ insurance platform program</strong> at TCS — the largest contract in TCS history at signing — to <strong>PMO leadership across 13 university departments</strong> and workforce optimization for 500+ staff.</p>
+
+        <p>I lead through clear frameworks, not force of personality: <strong>integrated project plans, RAID logs, RACI matrices, Agile ceremonies, Power BI dashboards</strong>, and the kind of documentation that survives team turnover. My edge is the handoff between delivery execution and reporting intelligence — I don't just track projects, I build the reporting infrastructure that lets leadership see risk, momentum, and milestone health in real time.</p>
+
+        <p>From standardizing <strong>90+ SOPs</strong> at TCS to taking <strong>$120K</strong> out of annual operating cost at ISU, the pattern is consistent: <strong>reduce noise, increase signal, deliver on commitment.</strong></p>
       </div>
-      <div class="about-body nonit-only">
-        <p>I work at the intersection of operations discipline and data-driven decision-making — structured execution paired with the analytics that make it visible.</p>
-        <p>Six-plus years across enterprise operations, delivery governance, supply chain coordination, and business analytics. I've scaled from leading high-volume insurance operations on a $2B+ TCS program to PMO leadership across 13 university departments and workforce optimization for 500+ staff. I lead through clear frameworks, not force of personality: <strong>SOPs, KPI dashboards, RAID logs, RCA practices, Agile ceremonies</strong>, and the kind of documentation that survives team turnover.</p>
-        <p><strong>My edge is the handoff between operations and intelligence.</strong> I don't just run projects — I build the reporting infrastructure that lets leadership see risk, cost exposure, and performance trends in real time. From standardizing <strong>90+ SOPs</strong> at TCS to taking <strong>$120K</strong> out of annual operating cost at ISU, the pattern is consistent: reduce waste, increase signal, deliver on commitment.</p>
-        <p>I'm especially drawn to environments where operational complexity meets real stakes, and continuous improvement isn't a buzzword but a daily habit.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== IMPACT ===== -->
+<section id="impact">
+  <div class="container">
+    <div class="section-num">/03 — Impact</div>
+    <h2 class="section-title">Measurable <em>impact</em> across both tracks.</h2>
+
+    <div class="impact-head">
+      <div class="section-sub">Figures across engagements — tagged by track</div>
+      <div class="legend-mini">
+        <span class="li"><span class="dot it"></span>IT Delivery</span>
+        <span class="li"><span class="dot ops"></span>Operations</span>
+      </div>
+    </div>
+
+    <div class="impact-grid">
+      <div class="stat it">
+        <span class="stat-track"></span>
+        <div class="stat-meta"><div class="stat-org">TCS</div><div class="stat-tag">IT</div></div>
+        <div class="figure">$2B+</div>
+        <div class="desc">Multi-year IT program scope, largest contract in TCS history at signing</div>
+      </div>
+      <div class="stat it">
+        <span class="stat-track"></span>
+        <div class="stat-meta"><div class="stat-org">TCS</div><div class="stat-tag">IT</div></div>
+        <div class="figure">15+</div>
+        <div class="desc">Project streams governed in Jira with integrated project plans</div>
+      </div>
+      <div class="stat ops">
+        <span class="stat-track"></span>
+        <div class="stat-meta"><div class="stat-org">TCS</div><div class="stat-tag">OPS</div></div>
+        <div class="figure">95%+</div>
+        <div class="desc">Sustained SLA performance across all managed project streams</div>
+      </div>
+      <div class="stat ops">
+        <span class="stat-track"></span>
+        <div class="stat-meta"><div class="stat-org">TCS</div><div class="stat-tag">OPS</div></div>
+        <div class="figure">$70M+</div>
+        <div class="desc">Annual client cost savings through delivery prioritization</div>
+      </div>
+
+      <div class="stat ops">
+        <span class="stat-track"></span>
+        <div class="stat-meta"><div class="stat-org">TCS</div><div class="stat-tag">OPS</div></div>
+        <div class="figure">5,000+</div>
+        <div class="desc">Transaction backlog cleared in 4 business days under pressure</div>
+      </div>
+      <div class="stat ops">
+        <span class="stat-track"></span>
+        <div class="stat-meta"><div class="stat-org">TCS</div><div class="stat-tag">OPS</div></div>
+        <div class="figure">90+</div>
+        <div class="desc">SOPs standardized with RACI accountability mapping</div>
+      </div>
+      <div class="stat ops">
+        <span class="stat-track"></span>
+        <div class="stat-meta"><div class="stat-org">TCS</div><div class="stat-tag">OPS</div></div>
+        <div class="figure">10M+</div>
+        <div class="desc">Insurance and annuity policies administered under program scope</div>
+      </div>
+      <div class="stat ops">
+        <span class="stat-track"></span>
+        <div class="stat-meta"><div class="stat-org">TCS</div><div class="stat-tag">OPS</div></div>
+        <div class="figure">25–30%</div>
+        <div class="desc">Rework reduction via root-cause analysis and process controls</div>
+      </div>
+
+      <div class="stat it">
+        <span class="stat-track"></span>
+        <div class="stat-meta"><div class="stat-org">ISU</div><div class="stat-tag">IT</div></div>
+        <div class="figure">5+</div>
+        <div class="desc">Executive Power BI dashboards delivered using SQL and Excel</div>
+      </div>
+      <div class="stat it">
+        <span class="stat-track"></span>
+        <div class="stat-meta"><div class="stat-org">ISU</div><div class="stat-tag">IT</div></div>
+        <div class="figure">30%+</div>
+        <div class="desc">Reduction in manual reporting effort via dashboard automation</div>
+      </div>
+      <div class="stat ops">
+        <span class="stat-track"></span>
+        <div class="stat-meta"><div class="stat-org">ISU</div><div class="stat-tag">OPS</div></div>
+        <div class="figure">$120K</div>
+        <div class="desc">Annual operating cost eliminated through workflow optimization</div>
+      </div>
+      <div class="stat ops">
+        <span class="stat-track"></span>
+        <div class="stat-meta"><div class="stat-org">ISU</div><div class="stat-tag">OPS</div></div>
+        <div class="figure">500+</div>
+        <div class="desc">Staff scheduled and resourced across high-volume operations</div>
       </div>
     </div>
   </div>
 </section>
 
-<section id="impact" class="it-only">
-  <div class="container">
-    <div class="section-num">02 / Impact</div>
-    <h2 class="section-title">Measurable <em>impact</em></h2>
-    <div class="section-sub">Figures across engagements</div>
-    <div class="impact-grid">
-      <div class="stat"><div class="org">TCS</div><div class="figure">$2B+</div><div class="desc">Multi-year IT program scope, largest contract in TCS history at signing</div></div>
-      <div class="stat"><div class="org">TCS</div><div class="figure">15+</div><div class="desc">Project streams governed in Jira with integrated project plans</div></div>
-      <div class="stat"><div class="org">TCS</div><div class="figure">95%+</div><div class="desc">Sustained SLA performance across all managed project streams</div></div>
-      <div class="stat"><div class="org">TCS</div><div class="figure">$70M+</div><div class="desc">Annual client cost savings driven through delivery prioritization</div></div>
-      <div class="stat"><div class="org">TCS</div><div class="figure">5,000+</div><div class="desc">Transaction backlog cleared in 4 business days under pressure</div></div>
-      <div class="stat"><div class="org">TCS</div><div class="figure">90+</div><div class="desc">SOPs standardized with RACI accountability mapping</div></div>
-      <div class="stat"><div class="org">TCS</div><div class="figure">10M+</div><div class="desc">Insurance and annuity policies administered under program scope</div></div>
-      <div class="stat"><div class="org">TCS</div><div class="figure">25–30%</div><div class="desc">Rework reduction via root-cause analysis and process controls</div></div>
-      <div class="stat"><div class="org">ISU</div><div class="figure">13</div><div class="desc">Departments coordinated under Student Affairs PMO delivery</div></div>
-      <div class="stat"><div class="org">ISU</div><div class="figure">5+</div><div class="desc">Executive Power BI dashboards delivered using SQL and Excel</div></div>
-      <div class="stat"><div class="org">ISU</div><div class="figure">30%+</div><div class="desc">Reduction in manual reporting effort via dashboard automation</div></div>
-      <div class="stat"><div class="org">ISU</div><div class="figure">65+</div><div class="desc">Dashboard data and reporting issues resolved for stakeholder trust</div></div>
-    </div>
-  </div>
-</section>
-
-<section id="impact-nonit" class="nonit-only">
-  <div class="container">
-    <div class="section-num">02 / Impact</div>
-    <h2 class="section-title">Measurable <em>impact</em></h2>
-    <div class="section-sub">Figures across engagements</div>
-    <div class="impact-grid">
-      <div class="stat"><div class="org">TCS</div><div class="figure">$2B+</div><div class="desc">Multi-year TPA program, largest contract in TCS history at signing</div></div>
-      <div class="stat"><div class="org">TCS</div><div class="figure">5,000+</div><div class="desc">Policy transaction backlog cleared within 4 business days under pressure</div></div>
-      <div class="stat"><div class="org">TCS</div><div class="figure">95%+</div><div class="desc">Sustained SLA performance across all managed project streams</div></div>
-      <div class="stat"><div class="org">ISU</div><div class="figure">$120K</div><div class="desc">Annual operating cost eliminated through workflow optimization</div></div>
-      <div class="stat"><div class="org">ISU</div><div class="figure">13</div><div class="desc">Departments coordinated under Student Affairs PMO delivery</div></div>
-      <div class="stat"><div class="org">ISU</div><div class="figure">30%+</div><div class="desc">Reduction in manual reporting effort via Power BI automation</div></div>
-      <div class="stat"><div class="org">TCS</div><div class="figure">90+</div><div class="desc">SOPs standardized to improve audit readiness and consistency</div></div>
-      <div class="stat"><div class="org">TCS</div><div class="figure">25–30%</div><div class="desc">Rework reduction via root-cause analysis and process controls</div></div>
-      <div class="stat"><div class="org">ISU</div><div class="figure">500+</div><div class="desc">Staff scheduled and resourced across high-volume operations</div></div>
-      <div class="stat"><div class="org">ISU</div><div class="figure">65+</div><div class="desc">Dashboard data and reporting errors resolved for stakeholder trust</div></div>
-      <div class="stat"><div class="org">TCS</div><div class="figure">10M+</div><div class="desc">Life, annuity, and health policies administered under program scope</div></div>
-      <div class="stat"><div class="org">TCS</div><div class="figure">25+</div><div class="desc">Team members trained and mentored across offshore pods</div></div>
-    </div>
-  </div>
-</section>
-
+<!-- ===== EXPERIENCE ===== -->
 <section id="experience">
   <div class="container">
-    <div class="section-num">03 / Experience</div>
-    <h2 class="section-title">Selected <em>experience</em></h2>
+    <div class="section-num">/04 — Experience</div>
+    <h2 class="section-title">Selected <em>experience</em>.</h2>
+
     <div class="exp-meta">
       <div class="span">2018 to Present</div>
       <div class="marker">Reverse Chronological</div>
     </div>
 
+    <!-- ISU PMO -->
     <div class="exp-row">
-      <div class="exp-date">Aug 2025 – Dec 2025<br><span class="badge">Most Recent</span></div>
+      <div class="exp-side">
+        <div class="exp-date">Aug 2025 – Dec 2025</div>
+        <div class="badge-current">Most Recent</div>
+        <div><span class="track-tag both">Both Tracks</span></div>
+      </div>
       <div>
         <div class="exp-role">Project Manager, PMO – Student Affairs</div>
         <div class="exp-co">Illinois State University · Normal, IL</div>
         <div class="exp-body">
           <ul>
-            <li class="it-only">Led <strong>integrated project plans</strong> across <strong>13 departments</strong>, owning cross-functional dependencies, milestones, risks, and KPIs to drive on-time delivery across multiple workstreams.</li>
-            <li class="nonit-only">Planned and facilitated execution across <strong>13 departments</strong>, aligning stakeholders, timelines, and priorities using Waterfall (MS Project) and Agile (Asana) methodologies.</li>
-            <li>Owned the executive reporting layer, delivering <strong>5+ Power BI dashboards</strong> built with SQL and Excel that enabled leadership to track KPIs and accelerate data-driven decisions.</li>
-            <li>Resolved <strong>65+ data and reporting errors</strong> across existing dashboards, restoring data accuracy, reliability, and stakeholder confidence.</li>
-            <li>Drove a <strong>30%+ reduction in manual reporting effort</strong> by automating recurring workflows and dashboard refresh cycles in Power BI and Excel.</li>
-            <li class="it-only">Led Agile project tracking and delivery coordination across cross-functional teams, governing dependencies, blockers, delivery risks, and progress aligned with established delivery processes.</li>
-            <li class="nonit-only">Facilitated Agile ceremonies including sprint planning, standups, reviews, retros, and backlog refinement across a 4-month delivery window.</li>
-            <li>Owned process flow documentation and centralized project plans, status reports, and recurring-process documentation in <strong>SharePoint and Confluence</strong>.</li>
+            <li class="it-bullet">Led <strong>integrated project plans</strong> across <strong>13 departments</strong>, owning cross-functional dependencies, milestones, risks, and KPIs to drive on-time delivery across multiple workstreams.</li>
+            <li class="it-bullet">Owned the executive reporting layer, delivering <strong>5+ Power BI dashboards</strong> built with SQL and Excel that enabled leadership to track KPIs and accelerate data-driven decisions.</li>
+            <li class="it-bullet">Resolved <strong>65+ data and reporting errors</strong> across existing dashboards, restoring data accuracy, reliability, and stakeholder confidence.</li>
+            <li class="ops-bullet">Drove a <strong>30%+ reduction in manual reporting effort</strong> by automating recurring workflows and dashboard refresh cycles in Power BI and Excel.</li>
+            <li class="it-bullet">Facilitated Agile ceremonies — sprint planning, standups, reviews, retros, and backlog refinement — across a 4-month delivery window.</li>
+            <li class="ops-bullet">Centralized project plans, status reports, and recurring-process documentation in <strong>SharePoint and Confluence</strong>.</li>
           </ul>
         </div>
       </div>
     </div>
 
+    <!-- ISU PM Assistant -->
     <div class="exp-row">
-      <div class="exp-date">Jan 2025 – May 2025</div>
+      <div class="exp-side">
+        <div class="exp-date">Jan 2025 – May 2025</div>
+        <div><span class="track-tag it">IT Delivery</span></div>
+      </div>
       <div>
         <div class="exp-role">Project Management Assistant</div>
         <div class="exp-co">Illinois State University · Normal, IL</div>
         <div class="exp-body">
           <ul>
-            <li>Built and maintained project plans in <strong>Microsoft Project</strong> and Excel, owning schedules, dependencies, and deliverables to ensure on-time execution across multiple workstreams.</li>
-            <li>Led onboarding and process alignment by developing training materials and driving knowledge transfer, improving team efficiency and reducing ramp-up time.</li>
-            <li>Automated recurring reporting workflows in Power BI and Microsoft 365, cutting manual reporting effort by <strong>20%+</strong> and improving accuracy and turnaround time.</li>
+            <li class="it-bullet">Built and maintained project plans in <strong>Microsoft Project</strong> and Excel, owning schedules, dependencies, and deliverables to ensure on-time execution across multiple workstreams.</li>
+            <li class="ops-bullet">Led onboarding and process alignment by developing training materials and driving knowledge transfer, improving team efficiency and reducing ramp-up time.</li>
+            <li class="it-bullet">Automated recurring reporting workflows in Power BI and Microsoft 365, cutting manual reporting effort by <strong>20%+</strong>.</li>
           </ul>
         </div>
       </div>
     </div>
 
+    <!-- ISU Ops Coordinator -->
     <div class="exp-row">
-      <div class="exp-date">Feb 2024 – Dec 2024</div>
+      <div class="exp-side">
+        <div class="exp-date">Feb 2024 – Dec 2024</div>
+        <div><span class="track-tag ops">Operations</span></div>
+      </div>
       <div>
         <div class="exp-role">Project Operations Coordinator</div>
         <div class="exp-co">Illinois State University · Normal, IL</div>
         <div class="exp-body">
           <ul>
-            <li>Owned workforce planning and capacity allocation across <strong>500+ staff</strong>, identifying resource overallocations and conflicts to align operations with demand fluctuations and eliminate delays and bottlenecks.</li>
-            <li>Drove <strong>$120K in annual operational cost savings</strong> by documenting recurring process flows and leading workflow improvements across high-volume operations.</li>
-            <li>Built and owned Power BI dashboards tracking KPIs and performance trends, enabling leadership to make faster, data-driven decisions.</li>
+            <li class="ops-bullet">Owned workforce planning and capacity allocation across <strong>500+ staff</strong>, identifying resource overallocations to align operations with demand fluctuations.</li>
+            <li class="ops-bullet">Drove <strong>$120K in annual operational cost savings</strong> by documenting recurring process flows and leading workflow improvements.</li>
+            <li class="it-bullet">Built and owned Power BI dashboards tracking KPIs and performance trends, enabling leadership to make faster, data-driven decisions.</li>
           </ul>
         </div>
       </div>
     </div>
 
-    <div class="exp-row it-only">
-      <div class="exp-date">Mar 2019 – Dec 2023</div>
-      <div>
-        <div class="exp-role">Project Lead — Operations &amp; Delivery</div>
-        <div class="exp-co">Tata Consultancy Services (Transamerica Insurance) · India</div>
-        <div class="exp-body">
-          <ul>
-            <li>Led end-to-end delivery governance for TCS's <strong>$2B+ multi-year program</strong> with Transamerica Insurance — the largest contract in TCS history at signing — owning execution accountability across <strong>15+ distributed onshore/offshore cross-functional teams</strong> supporting <strong>10M+ insurance and annuity policies</strong>.</li>
-            <li>Drove delivery coordination for the system migration to <strong>TCS BaNCS</strong>, partnering with <strong>Product Owners, technical leads, QA, and technology teams</strong> to govern solution design, validate data, manage release schedules, and ensure production stability.</li>
-            <li>Owned <strong>integrated project plans</strong> for 15+ project streams in <strong>Jira</strong> — directing epics, features, dependencies, milestones, and releases — toward <strong>$70M+ in annual client cost savings</strong>.</li>
-            <li>Held delivery accountability for <strong>95%+ SLA performance</strong>, governing RAID items and removing blockers across overlapping plans.</li>
-            <li>Cleared a <strong>5,000+ policy backlog in 4 business days</strong> through risk management and dependency reprioritization under high-pressure, multi-team conditions.</li>
-            <li>Established <strong>90+ SOPs</strong> with <strong>RACI-style accountability mapping</strong>, clarifying ownership for cross-system and interdependent activities.</li>
-            <li>Owned executive reporting cadence — <strong>Power BI and PowerPoint dashboards</strong> aggregating KPIs, SLA adherence, and defect trends.</li>
-            <li>Drove <strong>25–30% rework reduction</strong> through structured root cause analysis.</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-
-    <div class="exp-row nonit-only">
-      <div class="exp-date">Mar 2019 – Dec 2023</div>
-      <div>
-        <div class="exp-role">Project Lead — Operations &amp; Delivery</div>
-        <div class="exp-co">Tata Consultancy Services (Transamerica Insurance) · India</div>
-        <div class="exp-body">
-          <ul>
-            <li>Drove delivery governance within TCS's <strong>$2B+ TPA program</strong> for Transamerica Insurance — the largest contract in TCS history at signing — supporting digitization of <strong>10M+ life, annuity, and supplemental health policies</strong>.</li>
-            <li>Executed and optimized <strong>large-scale operational workflows aligned with supply chain execution</strong>, sustaining 95%+ SLA adherence and improving efficiency across high-volume service delivery environments.</li>
-            <li>Analyzed <strong>workflow dependencies and upstream/downstream impacts</strong>, driving resource allocation, cost control, and process optimization across 15+ operational streams.</li>
-            <li>Managed 15+ operational project streams toward <strong>$70M+ in annual client cost savings</strong>, tracking tasks, defects, and releases in Jira.</li>
-            <li>Cleared a <strong>5,000+ policy backlog in 4 business days</strong> by reallocating resources and implementing quality checkpoints under pressure.</li>
-            <li>Standardized and governed <strong>90+ SOPs</strong> for audit readiness and compliance across distributed teams.</li>
-            <li>Reduced rework <strong>25–30%</strong> through structured root cause analysis and process controls.</li>
-            <li>Trained and mentored <strong>25+ team members</strong>, leading structured knowledge transfer to maintain delivery consistency offshore.</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-
+    <!-- TCS Project Lead -->
     <div class="exp-row">
-      <div class="exp-date">Nov 2018 – Feb 2019</div>
+      <div class="exp-side">
+        <div class="exp-date">Mar 2019 – Dec 2023</div>
+        <div><span class="track-tag both">Both Tracks</span></div>
+      </div>
+      <div>
+        <div class="exp-role">Project Lead — Operations &amp; Delivery</div>
+        <div class="exp-co">Tata Consultancy Services (Transamerica Insurance) · India</div>
+        <div class="exp-body">
+          <ul>
+            <li class="it-bullet">Led end-to-end delivery governance for TCS's <strong>$2B+ multi-year program</strong> with Transamerica Insurance — the largest contract in TCS history at signing — owning execution accountability across <strong>15+ distributed onshore/offshore cross-functional teams</strong> supporting <strong>10M+ insurance and annuity policies</strong>.</li>
+            <li class="it-bullet">Drove delivery coordination for the system migration to <strong>TCS BaNCS</strong>, partnering with <strong>Product Owners, technical leads, QA, and technology teams</strong> to govern solution design, validate data, manage release schedules, and ensure production stability.</li>
+            <li class="it-bullet">Owned <strong>integrated project plans</strong> for 15+ project streams in <strong>Jira</strong> — directing epics, features, dependencies, milestones, and releases — toward <strong>$70M+ in annual client cost savings</strong>.</li>
+            <li class="ops-bullet">Held delivery accountability for <strong>95%+ SLA performance</strong>, governing RAID items and removing blockers across overlapping plans.</li>
+            <li class="ops-bullet">Cleared a <strong>5,000+ policy backlog in 4 business days</strong> through risk management and dependency reprioritization under high-pressure, multi-team conditions.</li>
+            <li class="ops-bullet">Established <strong>90+ SOPs</strong> with <strong>RACI-style accountability mapping</strong>, clarifying ownership for cross-system and interdependent activities.</li>
+            <li class="it-bullet">Owned executive reporting cadence — <strong>Power BI and PowerPoint dashboards</strong> aggregating KPIs, SLA adherence, and defect trends.</li>
+            <li class="ops-bullet">Drove <strong>25–30% rework reduction</strong> through structured root cause analysis.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- TCS Assistant -->
+    <div class="exp-row">
+      <div class="exp-side">
+        <div class="exp-date">Nov 2018 – Feb 2019</div>
+        <div><span class="track-tag ops">Operations</span></div>
+      </div>
       <div>
         <div class="exp-role">Assistant Project Lead</div>
         <div class="exp-co">Tata Consultancy Services · India</div>
         <div class="exp-body">
           <ul>
-            <li>Led quality governance across multiple high-risk U.S. insurance workflows, ensuring SLA compliance and operational stability across distributed teams.</li>
-            <li>Acted as key escalation point for complex exception cases, resolving critical processing issues and preventing downstream financial or compliance impact.</li>
-            <li>Conducted structured trend analysis and root cause investigations, implementing corrective controls that reduced repeat defects.</li>
-            <li>Strengthened audit readiness by standardizing documentation frameworks aligned with regulatory and client governance standards; mentored new analysts.</li>
+            <li class="ops-bullet">Led quality governance across multiple high-risk U.S. insurance workflows, ensuring SLA compliance and operational stability across distributed teams.</li>
+            <li class="ops-bullet">Acted as key escalation point for complex exception cases, resolving critical processing issues and preventing downstream financial or compliance impact.</li>
+            <li class="ops-bullet">Conducted structured trend analysis and root cause investigations, implementing corrective controls that reduced repeat defects.</li>
+            <li class="ops-bullet">Strengthened audit readiness by standardizing documentation frameworks aligned with regulatory and client governance standards; mentored new analysts.</li>
           </ul>
         </div>
       </div>
     </div>
-
   </div>
 </section>
 
+<!-- ===== CASE STUDIES ===== -->
 <section id="cases">
   <div class="container">
-    <div class="section-num">04 / Case Studies</div>
-    <h2 class="section-title">Case <em>studies</em></h2>
-    <div class="section-sub">Three engagements, in focus</div>
+    <div class="section-num">/05 — Case Studies</div>
+    <h2 class="section-title">Three engagements <em>in focus</em>.</h2>
 
-    <article class="case-card it-only">
-      <div class="case-meta"><div class="case-tag">Flagship · TCS</div></div>
+    <article class="case-card">
+      <div class="case-meta">
+        <div class="case-num">CASE 01</div>
+        <div><span class="track-tag both">Both Tracks · Flagship</span></div>
+        <div class="case-context">Tata Consultancy Services<br>Transamerica Insurance<br>2018 — 2023</div>
+      </div>
       <div>
-        <h3 class="case-title">Driving IT delivery governance across a <em>$2B+</em> insurance platform migration.</h3>
-        <div class="case-context">Transamerica · 2018 to 2023 · Onshore / Offshore</div>
+        <h3 class="case-title">Driving delivery governance across a <em>$2B+</em> insurance platform migration.</h3>
         <div class="case-body">
           <p>Tata Consultancy Services' largest contract at signing: a multi-year mandate to digitize and administer over 10M life, annuity, and supplemental health policies on the <strong>TCS BaNCS platform</strong>. As Project Lead, I owned delivery governance across 15+ parallel project streams while the program absorbed a system migration and a $70M+ annual cost-savings target.</p>
           <p>Each stream had its own SLA, defect profile, and upstream/downstream dependencies. The work meant building <strong>integrated project plans in Jira</strong>, governing RAID items, partnering with Product Owners and technical leads on solution design, and synchronizing release schedules across overlapping plans. When the system migrated to BaNCS, QA coordination and release validation had to hold while production volume continued.</p>
@@ -795,34 +1433,17 @@
       </div>
     </article>
 
-    <article class="case-card nonit-only">
-      <div class="case-meta"><div class="case-tag">Flagship · TCS</div></div>
-      <div>
-        <h3 class="case-title">Stabilizing delivery inside a <em>$2B+</em> insurance TPA program.</h3>
-        <div class="case-context">Transamerica · 2018 to 2023 · Onshore / Offshore</div>
-        <div class="case-body">
-          <p>Tata Consultancy Services' largest contract at signing: a multi-year Third-Party Administration mandate to digitize and administer over 10M life, annuity, and supplemental health policies. As Project Lead, my job was to keep delivery steady across distributed teams while the program absorbed a platform migration and an annual cost-savings target north of $70M.</p>
-          <p>The work spanned 15+ parallel <strong>operational streams</strong>. Each had its own SLA, defect profile, and upstream/downstream dependencies. The difference between an on-time delivery and a client escalation often came down to 48-hour triage: reprioritize the backlog, reallocate resources, add a quality checkpoint, communicate up. <strong>Supply-chain-aligned execution</strong> meant treating volume, quality, and capacity as one system rather than three.</p>
-        </div>
-        <div class="case-stats">
-          <div class="stat-mini"><div class="v">95%+</div><div class="l">Sustained SLA</div></div>
-          <div class="stat-mini"><div class="v">5,000+</div><div class="l">Backlog cleared / 4 days</div></div>
-          <div class="stat-mini"><div class="v">90+</div><div class="l">SOPs standardized</div></div>
-          <div class="stat-mini"><div class="v">25–30%</div><div class="l">Rework reduction</div></div>
-        </div>
-      </div>
-    </article>
-
     <article class="case-card">
-      <div class="case-meta"><div class="case-tag">Recent · ISU</div></div>
+      <div class="case-meta">
+        <div class="case-num">CASE 02</div>
+        <div><span class="track-tag it">IT Delivery · Recent</span></div>
+        <div class="case-context">Illinois State University<br>Student Affairs PMO<br>Aug — Dec 2025</div>
+      </div>
       <div>
-        <h3 class="case-title">
-          Building <span class="it-only">an <em>integrated PMO reporting</em></span><span class="nonit-only">a <em>PMO reporting</em></span> layer for 13 departments.
-        </h3>
-        <div class="case-context">Student Affairs · Aug to Dec 2025</div>
+        <h3 class="case-title">Building an <em>integrated PMO reporting</em> layer for 13 departments.</h3>
         <div class="case-body">
           <p>Student Affairs had projects moving across 13 departments with no common view of progress, risk, or data quality. In a 4-month window I stood up a reporting layer: SQL-queried sources, transformed in Excel, visualized in Power BI, surfaced to leadership.</p>
-          <p>Alongside that, I ran Agile execution in Asana — sprint planning, standups, retros, and backlog — while centralizing every artifact in SharePoint and Confluence so version control actually meant something.</p>
+          <p>Alongside that, I ran Agile execution in Asana — sprint planning, standups, retros, and backlog — while centralizing every artifact in <strong>SharePoint and Confluence</strong> so version control actually meant something.</p>
         </div>
         <div class="case-stats">
           <div class="stat-mini"><div class="v">5+</div><div class="l">Power BI dashboards</div></div>
@@ -833,29 +1454,14 @@
       </div>
     </article>
 
-    <article class="case-card it-only">
-      <div class="case-meta"><div class="case-tag">Optimization · ISU</div></div>
-      <div>
-        <h3 class="case-title">Cutting <em>$120K</em> of annual cost through process redesign and analytics.</h3>
-        <div class="case-context">Workforce Planning · Feb to Dec 2024</div>
-        <div class="case-body">
-          <p>A 500-person scheduling operation running on spreadsheets and gut instinct. I mapped the workflows, surfaced inefficiencies through data analysis, and rebuilt the allocation logic — retiring $120K in annual spend while staffing coverage held.</p>
-          <p>The Power BI dashboards built during this engagement gave leadership a live read on KPIs and workforce trends that previously took days to compile.</p>
-        </div>
-        <div class="case-stats">
-          <div class="stat-mini"><div class="v">$120K</div><div class="l">Annual savings</div></div>
-          <div class="stat-mini"><div class="v">500+</div><div class="l">Staff scheduled</div></div>
-          <div class="stat-mini"><div class="v">0</div><div class="l">Coverage gaps</div></div>
-          <div class="stat-mini"><div class="v">3</div><div class="l">Dashboards built</div></div>
-        </div>
+    <article class="case-card">
+      <div class="case-meta">
+        <div class="case-num">CASE 03</div>
+        <div><span class="track-tag ops">Operations · Optimization</span></div>
+        <div class="case-context">Illinois State University<br>Workforce Planning<br>Feb — Dec 2024</div>
       </div>
-    </article>
-
-    <article class="case-card nonit-only">
-      <div class="case-meta"><div class="case-tag">Optimization · ISU</div></div>
       <div>
         <h3 class="case-title">Taking <em>$120K</em> out of operations without losing coverage.</h3>
-        <div class="case-context">Workforce Planning · Feb to Dec 2024</div>
         <div class="case-body">
           <p>A 500-person scheduling operation running on spreadsheets and gut instinct. I mapped the workflows, found the inefficiencies, and rebuilt the allocation logic — retiring $120K of annual spend while staffing coverage held.</p>
           <p>The Power BI dashboards that came out of this engagement gave leadership a live read on <strong>KPIs and workforce trends</strong> that previously took days to compile.</p>
@@ -868,74 +1474,146 @@
         </div>
       </div>
     </article>
-
   </div>
 </section>
 
-<section id="toolkit" class="it-only">
+<!-- ===== TOOLKIT ===== -->
+<section id="toolkit">
   <div class="container">
-    <div class="section-num">05 / Toolkit</div>
-    <h2 class="section-title">Skills &amp; <em>proficiency</em></h2>
-    <div class="section-sub">Years of experience</div>
+    <div class="section-num">/06 — Toolkit</div>
+    <h2 class="section-title">Skills, tools, &amp; <em>credentials</em>.</h2>
 
     <div class="tk-grid">
-      <div class="tk-cat">
-        <h3>Project Management</h3>
+      <!-- IT-leaning category -->
+      <div class="tk-cat cat-it">
+        <div class="cat-head">
+          <h3>IT Delivery</h3>
+          <span class="track-tag it">IT</span>
+        </div>
         <div class="cat-sub">Methodology &amp; Governance</div>
-        <ul>
-          <li><span class="skill">Integrated Project Planning</span><span class="lvl"><b>Expert</b> · 6+ yrs</span></li>
-          <li><span class="skill">RAID Management</span><span class="lvl"><b>Expert</b> · 6+ yrs</span></li>
-          <li><span class="skill">Stakeholder Management</span><span class="lvl"><b>Expert</b> · 6+ yrs</span></li>
-          <li><span class="skill">Governance &amp; Reporting</span><span class="lvl"><b>Expert</b> · 6+ yrs</span></li>
-          <li><span class="skill">SLA Management</span><span class="lvl"><b>Expert</b> · 6+ yrs</span></li>
-          <li><span class="skill">Process Optimization</span><span class="lvl"><b>Expert</b> · 6+ yrs</span></li>
-          <li><span class="skill">Waterfall Delivery</span><span class="lvl"><b>Expert</b> · 6+ yrs</span></li>
-          <li><span class="skill">SDLC Coordination</span><span class="lvl"><b>Advanced</b> · 5+ yrs</span></li>
-          <li><span class="skill">Release Management</span><span class="lvl"><b>Advanced</b> · 5+ yrs</span></li>
-          <li><span class="skill">Dependency &amp; Sequencing</span><span class="lvl"><b>Advanced</b> · 5+ yrs</span></li>
-          <li><span class="skill">RACI Matrix Development</span><span class="lvl"><b>Advanced</b> · 5+ yrs</span></li>
-          <li><span class="skill">Root Cause Analysis</span><span class="lvl"><b>Advanced</b> · 5+ yrs</span></li>
-          <li><span class="skill">KPI Tracking</span><span class="lvl"><b>Advanced</b> · 5+ yrs</span></li>
-          <li><span class="skill">Agile &amp; Hybrid Delivery</span><span class="lvl"><b>Advanced</b> · 4+ yrs</span></li>
-          <li><span class="skill">Agile Ceremonies</span><span class="lvl"><b>Advanced</b> · 3+ yrs</span></li>
+        <ul class="skill-list">
+          <li>
+            <div class="skill-row"><span class="skill">Integrated Project Planning</span><span class="lvl"><b>Expert</b> · 6+ yrs</span></div>
+            <div class="skill-bar"><div class="fill" style="width: 95%"></div></div>
+          </li>
+          <li>
+            <div class="skill-row"><span class="skill">RAID Management</span><span class="lvl"><b>Expert</b> · 6+ yrs</span></div>
+            <div class="skill-bar"><div class="fill" style="width: 95%"></div></div>
+          </li>
+          <li>
+            <div class="skill-row"><span class="skill">Release &amp; Dependency Management</span><span class="lvl"><b>Advanced</b> · 5+ yrs</span></div>
+            <div class="skill-bar"><div class="fill" style="width: 82%"></div></div>
+          </li>
+          <li>
+            <div class="skill-row"><span class="skill">SDLC Coordination</span><span class="lvl"><b>Advanced</b> · 5+ yrs</span></div>
+            <div class="skill-bar"><div class="fill" style="width: 82%"></div></div>
+          </li>
+          <li>
+            <div class="skill-row"><span class="skill">Agile Ceremonies &amp; Hybrid Delivery</span><span class="lvl"><b>Advanced</b> · 4+ yrs</span></div>
+            <div class="skill-bar"><div class="fill" style="width: 75%"></div></div>
+          </li>
+          <li>
+            <div class="skill-row"><span class="skill">RACI Matrix Development</span><span class="lvl"><b>Advanced</b> · 5+ yrs</span></div>
+            <div class="skill-bar"><div class="fill" style="width: 82%"></div></div>
+          </li>
         </ul>
       </div>
 
+      <!-- Ops-leaning category -->
+      <div class="tk-cat cat-ops">
+        <div class="cat-head">
+          <h3>Operations</h3>
+          <span class="track-tag ops">OPS</span>
+        </div>
+        <div class="cat-sub">Execution &amp; Cost Control</div>
+        <ul class="skill-list">
+          <li>
+            <div class="skill-row"><span class="skill">SLA Management</span><span class="lvl"><b>Expert</b> · 6+ yrs</span></div>
+            <div class="skill-bar"><div class="fill" style="width: 95%"></div></div>
+          </li>
+          <li>
+            <div class="skill-row"><span class="skill">Process Optimization</span><span class="lvl"><b>Expert</b> · 6+ yrs</span></div>
+            <div class="skill-bar"><div class="fill" style="width: 95%"></div></div>
+          </li>
+          <li>
+            <div class="skill-row"><span class="skill">Cost Control &amp; Resource Allocation</span><span class="lvl"><b>Expert</b> · 6+ yrs</span></div>
+            <div class="skill-bar"><div class="fill" style="width: 95%"></div></div>
+          </li>
+          <li>
+            <div class="skill-row"><span class="skill">Workflow Dependencies</span><span class="lvl"><b>Expert</b> · 6+ yrs</span></div>
+            <div class="skill-bar"><div class="fill" style="width: 92%"></div></div>
+          </li>
+          <li>
+            <div class="skill-row"><span class="skill">Root Cause Analysis</span><span class="lvl"><b>Advanced</b> · 5+ yrs</span></div>
+            <div class="skill-bar"><div class="fill" style="width: 82%"></div></div>
+          </li>
+          <li>
+            <div class="skill-row"><span class="skill">Supply Chain Coordination</span><span class="lvl"><b>Advanced</b> · 5+ yrs</span></div>
+            <div class="skill-bar"><div class="fill" style="width: 80%"></div></div>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Tools (universal — both tracks) -->
       <div class="tk-cat">
-        <h3>Tools &amp; Technology</h3>
+        <div class="cat-head">
+          <h3>Tools &amp; Tech</h3>
+          <span class="track-tag both">BOTH</span>
+        </div>
         <div class="cat-sub">Software &amp; Platforms</div>
-        <ul>
-          <li><span class="skill">Microsoft PowerPoint</span><span class="lvl"><b>Expert</b> · 6+ yrs</span></li>
-          <li><span class="skill">Advanced Excel</span><span class="lvl"><b>Expert</b> · 6+ yrs</span></li>
-          <li><span class="skill">Microsoft 365</span><span class="lvl"><b>Expert</b> · 6+ yrs</span></li>
-          <li><span class="skill">Jira</span><span class="lvl"><b>Advanced</b> · 5+ yrs</span></li>
-          <li><span class="skill">Power BI</span><span class="lvl"><b>Advanced</b> · 4+ yrs</span></li>
-          <li><span class="skill">Microsoft Project</span><span class="lvl"><b>Advanced</b> · 3+ yrs</span></li>
-          <li><span class="skill">Confluence</span><span class="lvl"><b>Advanced</b> · 3+ yrs</span></li>
-          <li><span class="skill">SharePoint</span><span class="lvl"><b>Advanced</b> · 3+ yrs</span></li>
-          <li><span class="skill">SQL</span><span class="lvl"><b>Working</b> · 1+ yr</span></li>
-          <li><span class="skill">Asana</span><span class="lvl"><b>Proficient</b> · 1+ yr</span></li>
-          <li><span class="skill">Looker Studio</span><span class="lvl"><b>Proficient</b> · 1+ yr</span></li>
-          <li><span class="skill">Power Apps</span><span class="lvl"><b>Foundational</b></span></li>
+        <ul class="skill-list">
+          <li>
+            <div class="skill-row"><span class="skill">Microsoft PowerPoint &amp; 365</span><span class="lvl"><b>Expert</b> · 6+ yrs</span></div>
+            <div class="skill-bar"><div class="fill" style="width: 95%"></div></div>
+          </li>
+          <li>
+            <div class="skill-row"><span class="skill">Advanced Excel</span><span class="lvl"><b>Expert</b> · 6+ yrs</span></div>
+            <div class="skill-bar"><div class="fill" style="width: 95%"></div></div>
+          </li>
+          <li>
+            <div class="skill-row"><span class="skill">Jira</span><span class="lvl"><b>Advanced</b> · 5+ yrs</span></div>
+            <div class="skill-bar"><div class="fill" style="width: 82%"></div></div>
+          </li>
+          <li>
+            <div class="skill-row"><span class="skill">Power BI</span><span class="lvl"><b>Advanced</b> · 4+ yrs</span></div>
+            <div class="skill-bar"><div class="fill" style="width: 75%"></div></div>
+          </li>
+          <li>
+            <div class="skill-row"><span class="skill">Microsoft Project</span><span class="lvl"><b>Advanced</b> · 3+ yrs</span></div>
+            <div class="skill-bar"><div class="fill" style="width: 68%"></div></div>
+          </li>
+          <li>
+            <div class="skill-row"><span class="skill">SharePoint &amp; Confluence</span><span class="lvl"><b>Advanced</b> · 3+ yrs</span></div>
+            <div class="skill-bar"><div class="fill" style="width: 68%"></div></div>
+          </li>
+          <li>
+            <div class="skill-row"><span class="skill">Asana &amp; Looker Studio</span><span class="lvl"><b>Proficient</b> · 1+ yr</span></div>
+            <div class="skill-bar"><div class="fill" style="width: 55%"></div></div>
+          </li>
+          <li>
+            <div class="skill-row"><span class="skill">SQL</span><span class="lvl"><b>Working</b> · 1+ yr</span></div>
+            <div class="skill-bar"><div class="fill" style="width: 50%"></div></div>
+          </li>
         </ul>
       </div>
 
+      <!-- Certs + Education -->
       <div class="tk-cat">
-        <h3>Certifications</h3>
-        <div class="cat-sub">Professional Credentials</div>
+        <div class="cat-head">
+          <h3>Credentials</h3>
+          <span class="track-tag both">CERTS</span>
+        </div>
+        <div class="cat-sub">Professional &amp; Academic</div>
         <ul class="cert-list">
-          <li><b>Project Management Professional (PMP)®</b><span>PMI</span></li>
-          <li><b>Six Sigma Black Belt</b><span>Certified</span></li>
+          <li><b>Project Management Professional (PMP)®</b><span>PMI · Active</span></li>
+          <li><b>Six Sigma Black Belt</b><span>LinkedIn Learning</span></li>
           <li><b>Atlassian Agile PM Professional</b><span>Atlassian</span></li>
           <li><b>CSCMP Supply Chain: Demand Planning</b><span>CSCMP</span></li>
           <li><b>Change Management Foundations</b><span>LinkedIn Learning</span></li>
           <li><b>Root Cause Analysis for Business</b><span>LinkedIn Learning</span></li>
         </ul>
-      </div>
 
-      <div class="tk-cat">
-        <h3>Education</h3>
-        <div class="cat-sub">Academic Background</div>
+        <div class="cat-sub" style="margin-top: 28px; margin-bottom: 14px;">Education</div>
         <ul class="edu-list">
           <li><span class="yr">2024–25</span><span class="deg">M.S. <em>Technology Project Management</em><small>Illinois State University · USA</small></span></li>
           <li><span class="yr">2025</span><span class="deg">Grad Cert. <em>Business Analytics</em><small>Illinois State University · USA</small></span></li>
@@ -947,140 +1625,68 @@
   </div>
 </section>
 
-<section id="toolkit-nonit" class="nonit-only">
-  <div class="container">
-    <div class="section-num">05 / Toolkit</div>
-    <h2 class="section-title">Skills &amp; <em>proficiency</em></h2>
-    <div class="section-sub">Years of experience</div>
-
-    <div class="tk-grid">
-      <div class="tk-cat">
-        <h3>Project Management</h3>
-        <div class="cat-sub">Methodology &amp; Governance</div>
-        <ul>
-          <li><span class="skill">Stakeholder Management</span><span class="lvl"><b>Expert</b> · 6+ yrs</span></li>
-          <li><span class="skill">SLA Management</span><span class="lvl"><b>Expert</b> · 6+ yrs</span></li>
-          <li><span class="skill">Process Optimization</span><span class="lvl"><b>Expert</b> · 6+ yrs</span></li>
-          <li><span class="skill">Waterfall Delivery</span><span class="lvl"><b>Expert</b> · 6+ yrs</span></li>
-          <li><span class="skill">Governance &amp; Reporting</span><span class="lvl"><b>Expert</b> · 6+ yrs</span></li>
-          <li><span class="skill">RAID Management</span><span class="lvl"><b>Advanced</b> · 5+ yrs</span></li>
-          <li><span class="skill">Root Cause Analysis</span><span class="lvl"><b>Advanced</b> · 5+ yrs</span></li>
-          <li><span class="skill">KPI Tracking</span><span class="lvl"><b>Advanced</b> · 5+ yrs</span></li>
-          <li><span class="skill">Agile &amp; Hybrid Delivery</span><span class="lvl"><b>Advanced</b> · 4+ yrs</span></li>
-          <li><span class="skill">Agile Ceremonies</span><span class="lvl"><b>Advanced</b> · 3+ yrs</span></li>
-        </ul>
-      </div>
-
-      <div class="tk-cat">
-        <h3>Supply Chain &amp; Operations</h3>
-        <div class="cat-sub">Execution &amp; Cost Control</div>
-        <ul>
-          <li><span class="skill">Cost Control</span><span class="lvl"><b>Expert</b> · 6+ yrs</span></li>
-          <li><span class="skill">Workflow Dependencies</span><span class="lvl"><b>Expert</b> · 6+ yrs</span></li>
-          <li><span class="skill">Resource Allocation</span><span class="lvl"><b>Expert</b> · 6+ yrs</span></li>
-          <li><span class="skill">Supply Chain Coordination</span><span class="lvl"><b>Advanced</b> · 5+ yrs</span></li>
-          <li><span class="skill">Quality Assurance</span><span class="lvl"><b>Advanced</b> · 5+ yrs</span></li>
-          <li><span class="skill">Demand Planning Support</span><span class="lvl"><b>Proficient</b> · 2+ yrs</span></li>
-        </ul>
-      </div>
-
-      <div class="tk-cat">
-        <h3>Tools &amp; Technology</h3>
-        <div class="cat-sub">Software &amp; Platforms</div>
-        <ul>
-          <li><span class="skill">Advanced Excel</span><span class="lvl"><b>Expert</b> · 6+ yrs</span></li>
-          <li><span class="skill">Microsoft 365</span><span class="lvl"><b>Expert</b> · 6+ yrs</span></li>
-          <li><span class="skill">Microsoft PowerPoint</span><span class="lvl"><b>Expert</b> · 6+ yrs</span></li>
-          <li><span class="skill">Power BI</span><span class="lvl"><b>Advanced</b> · 4+ yrs</span></li>
-          <li><span class="skill">Jira</span><span class="lvl"><b>Advanced</b> · 5+ yrs</span></li>
-          <li><span class="skill">SharePoint</span><span class="lvl"><b>Advanced</b> · 3+ yrs</span></li>
-          <li><span class="skill">Confluence</span><span class="lvl"><b>Advanced</b> · 3+ yrs</span></li>
-          <li><span class="skill">Microsoft Project</span><span class="lvl"><b>Advanced</b> · 3+ yrs</span></li>
-          <li><span class="skill">Asana</span><span class="lvl"><b>Proficient</b> · 1+ yr</span></li>
-          <li><span class="skill">Looker Studio</span><span class="lvl"><b>Proficient</b> · 1+ yr</span></li>
-          <li><span class="skill">SQL</span><span class="lvl"><b>Working</b> · 1+ yr</span></li>
-          <li><span class="skill">Power Apps</span><span class="lvl"><b>Foundational</b></span></li>
-        </ul>
-      </div>
-
-      <div class="tk-cat">
-        <h3>Certifications &amp; Education</h3>
-        <div class="cat-sub">Credentials &amp; Academic</div>
-        <ul class="cert-list">
-          <li><b>Project Management Professional (PMP)®</b><span>PMI</span></li>
-          <li><b>Six Sigma Black Belt</b><span>Certified</span></li>
-          <li><b>CSCMP Supply Chain: Demand Planning</b><span>CSCMP</span></li>
-          <li><b>Atlassian Agile PM Professional</b><span>Atlassian</span></li>
-          <li><b>Change Management Foundations</b><span>LinkedIn Learning</span></li>
-          <li><b>Root Cause Analysis for Business</b><span>LinkedIn Learning</span></li>
-        </ul>
-        <ul class="edu-list" style="margin-top: 24px;">
-          <li><span class="yr">2024–25</span><span class="deg">M.S. <em>Technology Project Management</em><small>Illinois State University · USA</small></span></li>
-          <li><span class="yr">2025</span><span class="deg">Grad Cert. <em>Business Analytics</em><small>Illinois State University · USA</small></span></li>
-          <li><span class="yr">2015–17</span><span class="deg">MBA <em>Finance</em><small>Gujarat Technological University · India</small></span></li>
-          <li><span class="yr">2013–15</span><span class="deg">B.Com <em>Accounting</em><small>Gujarat University · India</small></span></li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
-
+<!-- ===== CONTACT ===== -->
 <section id="contact">
   <div class="container">
-    <div class="section-num">06 / Contact</div>
-    <h2 class="section-title">Let's <em>talk</em></h2>
-    <div class="section-sub">Reach out</div>
+    <div class="section-num">/07 — Contact</div>
+    <h2 class="section-title">Let's <em>talk</em>.</h2>
 
     <div class="contact-wrap">
       <div>
-        <p class="contact-pitch it-only">Looking for a PM who brings <em>structure, analytics,</em> and <em>quiet accountability</em> to IT delivery?</p>
-        <p class="contact-pitch nonit-only">Looking for a PM who brings <em>structure, analytics,</em> and <em>quiet accountability</em> to operations?</p>
-
-        <p class="contact-body it-only">Currently open to IT Project Manager, Program Manager, Technical PM, and Delivery Lead roles. Remote, hybrid, or onsite in the U.S. I also relocate. Happy to share references, walk through case studies, or run a scoping conversation about your program's next quarter.</p>
-        <p class="contact-body nonit-only">Currently open to Operations PM, Supply Chain PM, PMO Lead, Workforce Operations, and Delivery Lead roles. Remote, hybrid, or onsite in the U.S. I also relocate. Happy to share references, walk through case studies, or run a scoping conversation about your operations' next quarter.</p>
+        <p class="contact-pitch">Looking for a PM who brings <em>structure, analytics,</em> and <em>quiet accountability</em> to both IT delivery and operations?</p>
+        <p class="contact-body">Currently open to <strong>IT Project Manager, Program Manager, Technical PM, PMO Lead, Operations PM, and Delivery Lead</strong> roles. Remote, hybrid, or onsite in the U.S. — open to relocation. Happy to share references, walk through case studies, or run a scoping conversation about your program's next quarter.</p>
       </div>
       <div>
         <ul class="contact-list">
-          <li><span class="lab">Email</span><a href="mailto:tejalchauhan022@gmail.com">tejalchauhan022@gmail.com →</a></li>
-          <li><span class="lab">Phone</span><a href="tel:+17083023185">+1 (708) 302-3185 →</a></li>
-          <li><span class="lab">LinkedIn</span><a href="https://www.linkedin.com/in/tejal-chauhan" target="_blank" rel="noopener">linkedin.com/in/tejal-chauhan →</a></li>
-          <li><span class="lab">Location</span><a href="#">Normal, Illinois · Will Relocate</a></li>
+          <li>
+            <span class="lab">Email</span>
+            <a href="mailto:tejalchauhan022@gmail.com">tejalchauhan022@gmail.com <span class="arr">→</span></a>
+          </li>
+          <li>
+            <span class="lab">Phone</span>
+            <a href="tel:+17083023185">+1 (708) 302-3185 <span class="arr">→</span></a>
+          </li>
+          <li>
+            <span class="lab">LinkedIn</span>
+            <a href="https://www.linkedin.com/in/tejal-chauhan" target="_blank" rel="noopener">linkedin.com/in/tejal-chauhan <span class="arr">→</span></a>
+          </li>
+          <li>
+            <span class="lab">Location</span>
+            <a href="#">Normal, IL · Will Relocate</a>
+          </li>
         </ul>
       </div>
     </div>
 
     <footer>
-      <div>© 2026 Tejal Chauhan, PMP</div>
-      <div>Designed with intention</div>
+      <div>© 2026 Tejal Chauhan, PMP — All rights reserved</div>
+      <div class="dot-row">
+        <span>IT</span><span class="d it"></span>
+        <span style="margin-left: 8px;">OPS</span><span class="d ops"></span>
+      </div>
     </footer>
   </div>
 </section>
 
 <script>
+  // Scroll reveal — subtle, professional
   (function() {
-    var body = document.body;
-    var buttons = document.querySelectorAll('.mode-switch button');
-    function setMode(mode) {
-      if (mode !== 'it' && mode !== 'nonit') mode = 'it';
-      body.setAttribute('data-mode', mode);
-      buttons.forEach(function(b) {
-        var isActive = b.getAttribute('data-mode-set') === mode;
-        b.classList.toggle('active', isActive);
-        b.setAttribute('aria-selected', isActive ? 'true' : 'false');
-      });
-      try { localStorage.setItem('tc-portfolio-mode', mode); } catch(e) {}
+    var els = document.querySelectorAll('.section-num, h2.section-title, .stat, .case-card, .exp-row, .tk-cat');
+    els.forEach(function(el) { el.classList.add('reveal'); });
+
+    if ('IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function(entries) {
+        entries.forEach(function(e) {
+          if (e.isIntersecting) {
+            e.target.classList.add('in');
+            io.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+      els.forEach(function(el) { io.observe(el); });
+    } else {
+      els.forEach(function(el) { el.classList.add('in'); });
     }
-    var saved = 'it';
-    try {
-      var s = localStorage.getItem('tc-portfolio-mode');
-      if (s === 'it' || s === 'nonit') saved = s;
-    } catch(e) {}
-    setMode(saved);
-    buttons.forEach(function(b) {
-      b.addEventListener('click', function() {
-        setMode(b.getAttribute('data-mode-set'));
-      });
-    });
   })();
 </script>
 
